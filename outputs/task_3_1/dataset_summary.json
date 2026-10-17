@@ -1,0 +1,185 @@
+{
+  "businesses": {
+    "rows": 150346,
+    "columns": {
+      "business_id": "Value('string')",
+      "name": "Value('string')",
+      "address": "Value('string')",
+      "city": "Value('string')",
+      "state": "Value('string')",
+      "postal_code": "Value('string')",
+      "latitude": "Value('float64')",
+      "longitude": "Value('float64')",
+      "stars": "Value('float64')",
+      "review_count": "Value('int64')",
+      "is_open": "Value('int64')",
+      "attributes": "Json(decode=True)",
+      "categories": "Value('string')",
+      "hours": "Json(decode=True)"
+    },
+    "missing_required_values": {
+      "business_id": 0,
+      "name": 0,
+      "categories": 103
+    },
+    "rating_counts": {
+      "1.0": 1986,
+      "1.5": 4932,
+      "2.0": 9527,
+      "2.5": 14316,
+      "3.0": 18453,
+      "3.5": 26519,
+      "4.0": 31125,
+      "4.5": 27181,
+      "5.0": 16307
+    },
+    "top_states": [
+      {
+        "value": "PA",
+        "count": 34039
+      },
+      {
+        "value": "FL",
+        "count": 26330
+      },
+      {
+        "value": "TN",
+        "count": 12056
+      },
+      {
+        "value": "IN",
+        "count": 11247
+      },
+      {
+        "value": "MO",
+        "count": 10913
+      },
+      {
+        "value": "LA",
+        "count": 9924
+      },
+      {
+        "value": "AZ",
+        "count": 9912
+      },
+      {
+        "value": "NJ",
+        "count": 8536
+      },
+      {
+        "value": "NV",
+        "count": 7715
+      },
+      {
+        "value": "AB",
+        "count": 5573
+      }
+    ],
+    "top_categories": [
+      {
+        "value": "Restaurants",
+        "count": 52268
+      },
+      {
+        "value": "Food",
+        "count": 27781
+      },
+      {
+        "value": "Shopping",
+        "count": 24395
+      },
+      {
+        "value": "Home Services",
+        "count": 14356
+      },
+      {
+        "value": "Beauty & Spas",
+        "count": 14292
+      },
+      {
+        "value": "Nightlife",
+        "count": 12281
+      },
+      {
+        "value": "Health & Medical",
+        "count": 11890
+      },
+      {
+        "value": "Local Services",
+        "count": 11198
+      },
+      {
+        "value": "Bars",
+        "count": 11065
+      },
+      {
+        "value": "Automotive",
+        "count": 10773
+      },
+      {
+        "value": "Event Planning & Services",
+        "count": 9895
+      },
+      {
+        "value": "Sandwiches",
+        "count": 8366
+      },
+      {
+        "value": "American (Traditional)",
+        "count": 8139
+      },
+      {
+        "value": "Active Life",
+        "count": 7687
+      },
+      {
+        "value": "Pizza",
+        "count": 7093
+      }
+    ]
+  },
+  "reviews": {
+    "rows": 6990280,
+    "columns": {
+      "review_id": "Value('string')",
+      "user_id": "Value('string')",
+      "business_id": "Value('string')",
+      "stars": "Value('float64')",
+      "useful": "Value('int64')",
+      "funny": "Value('int64')",
+      "cool": "Value('int64')",
+      "text": "Value('string')",
+      "date": "Value('timestamp[s]')"
+    },
+    "missing_required_values": {
+      "review_id": 0,
+      "user_id": 0,
+      "business_id": 0,
+      "stars": 0,
+      "text": 0,
+      "date": 0
+    },
+    "unique_users": 1987929,
+    "unique_businesses": 150346,
+    "date_range": {
+      "first": "2005-02-16 03:23:22",
+      "last": "2022-01-19 19:48:45"
+    },
+    "rating_counts": {
+      "1.0": 1069561,
+      "2.0": 544240,
+      "3.0": 691934,
+      "4.0": 1452918,
+      "5.0": 3231627
+    },
+    "text_length_characters": {
+      "mean": 567.76,
+      "minimum": 1,
+      "q25": 229.0,
+      "median": 406.0,
+      "q75": 720.0,
+      "q95": 1565.0,
+      "maximum": 5000
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Yelp source data and generated Arrow caches are local-only.
+data/raw/
+data/cache/
+data/nltk_data/

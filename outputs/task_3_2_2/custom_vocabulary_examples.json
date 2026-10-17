@@ -1,0 +1,418 @@
+{
+  "category_tokens": [
+    {
+      "token": "<EXCLAMATION>",
+      "frequency": 341148
+    },
+    {
+      "token": "<URL>",
+      "frequency": 1576
+    },
+    {
+      "token": "<EMAIL_OTHER_DOMAIN>",
+      "frequency": 75
+    },
+    {
+      "token": "<EMAIL>",
+      "frequency": 68
+    }
+  ],
+  "contractions": [
+    {
+      "token": "it's",
+      "frequency": 175639
+    },
+    {
+      "token": "don't",
+      "frequency": 116491
+    },
+    {
+      "token": "i'm",
+      "frequency": 109664
+    },
+    {
+      "token": "i've",
+      "frequency": 107490
+    },
+    {
+      "token": "didn't",
+      "frequency": 99115
+    },
+    {
+      "token": "can't",
+      "frequency": 54067
+    },
+    {
+      "token": "wasn't",
+      "frequency": 52921
+    },
+    {
+      "token": "you're",
+      "frequency": 41183
+    },
+    {
+      "token": "that's",
+      "frequency": 35697
+    },
+    {
+      "token": "i'll",
+      "frequency": 29323
+    },
+    {
+      "token": "i'd",
+      "frequency": 28724
+    },
+    {
+      "token": "couldn't",
+      "frequency": 27496
+    },
+    {
+      "token": "won't",
+      "frequency": 25226
+    },
+    {
+      "token": "there's",
+      "frequency": 22262
+    },
+    {
+      "token": "doesn't",
+      "frequency": 21558
+    }
+  ],
+  "hyphenated_words": [
+    {
+      "token": "go-to",
+      "frequency": 4249
+    },
+    {
+      "token": "to-go",
+      "frequency": 2361
+    },
+    {
+      "token": "take-out",
+      "frequency": 1823
+    },
+    {
+      "token": "check-in",
+      "frequency": 1282
+    },
+    {
+      "token": "so-so",
+      "frequency": 1173
+    },
+    {
+      "token": "gluten-free",
+      "frequency": 1066
+    },
+    {
+      "token": "drive-thru",
+      "frequency": 1000
+    },
+    {
+      "token": "po-boy",
+      "frequency": 998
+    },
+    {
+      "token": "co-workers",
+      "frequency": 901
+    },
+    {
+      "token": "top-notch",
+      "frequency": 716
+    },
+    {
+      "token": "in-house",
+      "frequency": 708
+    },
+    {
+      "token": "co-worker",
+      "frequency": 705
+    },
+    {
+      "token": "wi-fi",
+      "frequency": 702
+    },
+    {
+      "token": "pick-up",
+      "frequency": 689
+    },
+    {
+      "token": "sub-par",
+      "frequency": 635
+    }
+  ],
+  "dates": [
+    {
+      "token": "24/7/365",
+      "frequency": 7
+    },
+    {
+      "token": "5/25/18",
+      "frequency": 6
+    },
+    {
+      "token": "9/15/18",
+      "frequency": 5
+    },
+    {
+      "token": "9/13/18",
+      "frequency": 5
+    },
+    {
+      "token": "12/15/18",
+      "frequency": 5
+    },
+    {
+      "token": "11/22/2016",
+      "frequency": 5
+    },
+    {
+      "token": "8/6/18",
+      "frequency": 4
+    },
+    {
+      "token": "2/4/20",
+      "frequency": 4
+    },
+    {
+      "token": "1/28/20",
+      "frequency": 4
+    },
+    {
+      "token": "11/11/18",
+      "frequency": 4
+    },
+    {
+      "token": "1/2/19",
+      "frequency": 4
+    },
+    {
+      "token": "7/23/18",
+      "frequency": 4
+    },
+    {
+      "token": "3/31/18",
+      "frequency": 4
+    },
+    {
+      "token": "10/24/16",
+      "frequency": 4
+    },
+    {
+      "token": "12/4/15",
+      "frequency": 4
+    }
+  ],
+  "letter_number_tokens": [
+    {
+      "token": "2x",
+      "frequency": 408
+    },
+    {
+      "token": "3x",
+      "frequency": 397
+    },
+    {
+      "token": "80s",
+      "frequency": 366
+    },
+    {
+      "token": "90s",
+      "frequency": 350
+    },
+    {
+      "token": "a1",
+      "frequency": 240
+    },
+    {
+      "token": "70s",
+      "frequency": 223
+    },
+    {
+      "token": "3d",
+      "frequency": 210
+    },
+    {
+      "token": "50s",
+      "frequency": 201
+    },
+    {
+      "token": "covid19",
+      "frequency": 194
+    },
+    {
+      "token": "20s",
+      "frequency": 174
+    },
+    {
+      "token": "10x",
+      "frequency": 149
+    },
+    {
+      "token": "60s",
+      "frequency": 147
+    },
+    {
+      "token": "4x",
+      "frequency": 124
+    },
+    {
+      "token": "30s",
+      "frequency": 120
+    },
+    {
+      "token": "40s",
+      "frequency": 116
+    }
+  ],
+  "unicode_words": [
+    {
+      "token": "fiancé",
+      "frequency": 2040
+    },
+    {
+      "token": "jalapeño",
+      "frequency": 1651
+    },
+    {
+      "token": "café",
+      "frequency": 1085
+    },
+    {
+      "token": "sautéed",
+      "frequency": 977
+    },
+    {
+      "token": "jalapeños",
+      "frequency": 970
+    },
+    {
+      "token": "entrée",
+      "frequency": 896
+    },
+    {
+      "token": "brûlée",
+      "frequency": 851
+    },
+    {
+      "token": "décor",
+      "frequency": 787
+    },
+    {
+      "token": "entrées",
+      "frequency": 415
+    },
+    {
+      "token": "açaí",
+      "frequency": 371
+    },
+    {
+      "token": "étouffée",
+      "frequency": 347
+    },
+    {
+      "token": "crème",
+      "frequency": 284
+    },
+    {
+      "token": "soufflé",
+      "frequency": 274
+    },
+    {
+      "token": "fiancée",
+      "frequency": 257
+    },
+    {
+      "token": "purée",
+      "frequency": 212
+    }
+  ],
+  "emoji_or_pictographic_symbols": [
+    {
+      "token": "‼",
+      "frequency": 120
+    },
+    {
+      "token": "®",
+      "frequency": 26
+    },
+    {
+      "token": "™",
+      "frequency": 10
+    },
+    {
+      "token": "⁉",
+      "frequency": 2
+    },
+    {
+      "token": "©",
+      "frequency": 1
+    },
+    {
+      "token": "‼‍",
+      "frequency": 1
+    }
+  ],
+  "decimal_numbers": [
+    {
+      "token": "3.5",
+      "frequency": 2375
+    },
+    {
+      "token": "4.5",
+      "frequency": 1371
+    },
+    {
+      "token": "1.5",
+      "frequency": 1333
+    },
+    {
+      "token": "2.5",
+      "frequency": 1279
+    },
+    {
+      "token": "2.50",
+      "frequency": 785
+    },
+    {
+      "token": "1.50",
+      "frequency": 675
+    },
+    {
+      "token": "3.50",
+      "frequency": 626
+    },
+    {
+      "token": "5.00",
+      "frequency": 439
+    },
+    {
+      "token": "10.00",
+      "frequency": 402
+    },
+    {
+      "token": "4.50",
+      "frequency": 394
+    },
+    {
+      "token": "9.99",
+      "frequency": 392
+    },
+    {
+      "token": "7.50",
+      "frequency": 369
+    },
+    {
+      "token": "3.00",
+      "frequency": 343
+    },
+    {
+      "token": "8.50",
+      "frequency": 339
+    },
+    {
+      "token": "7.99",
+      "frequency": 335
+    }
+  ]
+}

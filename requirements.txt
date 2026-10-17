@@ -1,0 +1,6 @@
+datasets>=4.4,<5
+matplotlib>=3.10,<4
+nltk>=3.9,<4
+numpy>=2.2,<3
+pyarrow>=25,<26
+regex>=2024.11.6

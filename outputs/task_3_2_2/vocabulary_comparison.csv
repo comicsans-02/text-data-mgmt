@@ -1,0 +1,4 @@
+tokenizer,reviews,tokens,vocabulary
+wordpunct,699028,85523718,189457
+word_tokenize,699028,83808479,307903
+custom_regex,699028,73564962,245428

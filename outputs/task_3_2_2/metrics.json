@@ -1,0 +1,35 @@
+{
+  "sample_fraction": 0.1,
+  "sample_seed": 42,
+  "qualitative_seed": 43,
+  "qualitative_pool_reviews": 100000,
+  "source_reviews": 6990280,
+  "sample_reviews": 699028,
+  "shared_normalization": "case-folding only",
+  "qualitative_email_redaction": "email local parts replaced with 'redacted'; quantitative counts unchanged",
+  "qualitative_examples": 18,
+  "missing_qualitative_strata": [
+    "Pictographic emoji graphemes"
+  ],
+  "comparison": [
+    {
+      "tokenizer": "wordpunct",
+      "reviews": 699028,
+      "tokens": 85523718,
+      "vocabulary": 189457
+    },
+    {
+      "tokenizer": "word_tokenize",
+      "reviews": 699028,
+      "tokens": 83808479,
+      "vocabulary": 307903
+    },
+    {
+      "tokenizer": "custom_regex",
+      "reviews": 699028,
+      "tokens": 73564962,
+      "vocabulary": 245428
+    }
+  ],
+  "runtime_seconds": 912.59
+}

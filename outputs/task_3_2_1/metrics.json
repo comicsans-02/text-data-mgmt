@@ -1,0 +1,49 @@
+{
+  "tokenizer": "nltk.tokenize.word_tokenize",
+  "normalization": "case-folded; punctuation-only tokens removed; single-letter alphabetic tokens removed except a and i; numbers retained",
+  "shuffle_seed": 42,
+  "reviews": 6990280,
+  "tokens": 743579319,
+  "vocabulary": 1345435,
+  "zipf": {
+    "slope": -1.4358253390472204,
+    "exponent": 1.4358253390472204,
+    "r_squared": 0.989183630925561,
+    "fit_minimum_rank": 10,
+    "fit_maximum_rank": 10000,
+    "fitted_terms": 9991
+  },
+  "heaps": {
+    "k": 2.7869904797158096,
+    "beta": 0.6404230208425721,
+    "r_squared": 0.9999121834677195,
+    "points": [
+      {
+        "percentage": 10,
+        "reviews": 699028,
+        "tokens": 74329195,
+        "vocabulary": 307553
+      },
+      {
+        "percentage": 30,
+        "reviews": 2097084,
+        "tokens": 223085770,
+        "vocabulary": 614916
+      },
+      {
+        "percentage": 50,
+        "reviews": 3495140,
+        "tokens": 371765025,
+        "vocabulary": 855792
+      },
+      {
+        "percentage": 100,
+        "reviews": 6990280,
+        "tokens": 743579319,
+        "vocabulary": 1345435
+      }
+    ],
+    "predicted_vocabulary_at_double_tokens": 2086048
+  },
+  "runtime_seconds": 3577.45
+}
