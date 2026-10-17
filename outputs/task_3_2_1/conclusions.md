@@ -24,17 +24,31 @@ very strong rank-frequency relationship over this range.
 The exponent is higher than the textbook value of approximately 1.0. This
 means frequency falls faster with rank in these processed Yelp reviews: a
 tenfold increase in rank corresponds to approximately `10^1.4358 = 27.3`
-times lower frequency under the fitted model. In practical terms, a relatively
-small group of common words accounts for much of the corpus, followed by a
-large tail of increasingly rare terms.
+times lower frequency under the fitted model. The observed distribution is
+therefore more skewed than the idealized Zipf distribution: a relatively small
+group of terms dominates the corpus while frequency declines rapidly through
+the remaining ranks.
+
+This stronger skew is consistent with the nature of the Yelp dataset. Reviews
+repeatedly use a small collection of function and opinion-language terms. For
+example, the highest-ranked tokens include `the`, `and`, `i`, `a`, `to`, and
+`was`, each occurring millions of times. At the other end, business names,
+locations, menu items, brands, slang, spelling variants, numbers, and
+multilingual fragments create a large and diverse rare-token tail. The lack of
+stemming and lemmatization also leaves related surface forms as separate
+vocabulary items. The combination of an unusually dominant head and a
+fragmented tail produces a steeper fitted slope than a balanced sample of
+general language might produce.
 
 Ranks 1–9 were excluded because the very highest-frequency tokens form a
 curved head rather than the approximately linear region used for the power-law
 fit. Ranks beyond 10,000 were also excluded because the rare-token tail is more
 strongly affected by discrete counts, names, spelling variants, and review
 noise. The conclusion is therefore that Zipf's Law is a strong approximation
-within the stated fitted range, not that every vocabulary rank follows one
-perfect power law.
+across a substantial rank-frequency region, not that every vocabulary rank
+follows one perfect power law. Its near-linear fit across 9,991 terms and three
+orders of magnitude in rank is meaningful even though the Yelp-specific head
+and extreme tail deviate from the idealized curve.
 
 ## Heaps' Law interpretation
 
