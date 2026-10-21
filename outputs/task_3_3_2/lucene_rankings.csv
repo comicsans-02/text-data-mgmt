@@ -1,0 +1,161 @@
+query,method,rank,ours_doc_id,ours_score,lucene_doc_id,lucene_score
+pho,bm25,1,29223,9.8673,29223,4.4851
+pho,bm25,2,492208,9.8384,492208,4.472
+pho,bm25,3,532412,9.7781,532412,4.4542
+pho,bm25,4,175019,9.757,175019,4.435
+pho,bm25,5,631117,9.7062,631117,4.4192
+pho,bm25,6,292955,9.6736,292955,4.4136
+pho,bm25,7,475129,9.602,475129,4.3699
+pho,bm25,8,413157,9.5774,413157,4.3533
+pho,bm25,9,661521,9.5538,661521,4.3426
+pho,bm25,10,269243,9.5071,602377,4.3229
+pho,tfidf,1,521913,0.7405,398020,3.0184
+pho,tfidf,2,21295,0.7203,615591,2.4645
+pho,tfidf,3,398020,0.7121,492208,2.4645
+pho,tfidf,4,420664,0.7079,571501,2.4645
+pho,tfidf,5,673405,0.6974,413157,2.338
+pho,tfidf,6,531155,0.6726,661521,2.2817
+pho,tfidf,7,269243,0.6693,230926,2.2043
+pho,tfidf,8,530096,0.6515,269243,2.1802
+pho,tfidf,9,202603,0.6482,76621,2.1343
+pho,tfidf,10,230926,0.6414,287412,2.1343
+terrible,bm25,1,11863,7.6963,11863,3.4983
+terrible,bm25,2,573777,7.5737,573777,3.4426
+terrible,bm25,3,658609,7.4178,658609,3.3717
+terrible,bm25,4,118988,7.3811,342926,3.3578
+terrible,bm25,5,342926,7.3404,118988,3.355
+terrible,bm25,6,637520,7.32,637520,3.3421
+terrible,bm25,7,7275,7.2908,7275,3.314
+terrible,bm25,8,363171,7.2557,363171,3.3041
+terrible,bm25,9,251523,7.2553,251523,3.2979
+terrible,bm25,10,524024,7.2377,524024,3.2899
+terrible,tfidf,1,658609,0.7708,42108,2.1746
+terrible,tfidf,2,31232,0.7048,658609,2.1056
+terrible,tfidf,3,18927,0.6723,573777,2.0734
+terrible,tfidf,4,51447,0.6608,517552,1.9852
+terrible,tfidf,5,270901,0.6434,118988,1.9852
+terrible,tfidf,6,573777,0.6116,11863,1.9322
+terrible,tfidf,7,145257,0.6074,364293,1.9073
+terrible,tfidf,8,42108,0.6063,90391,1.8379
+terrible,tfidf,9,95134,0.5915,146531,1.8379
+terrible,tfidf,10,377003,0.5892,377003,1.8379
+dog friendly patio,bm25,1,245808,17.7054,245808,8.0637
+dog friendly patio,bm25,2,634080,16.8855,634080,7.6752
+dog friendly patio,bm25,3,115717,16.8043,115717,7.6383
+dog friendly patio,bm25,4,392871,16.1639,392871,7.3472
+dog friendly patio,bm25,5,592718,16.1639,592718,7.3472
+dog friendly patio,bm25,6,641072,16.0671,641072,7.3032
+dog friendly patio,bm25,7,95712,15.877,95712,7.2168
+dog friendly patio,bm25,8,27883,15.7836,27883,7.1744
+dog friendly patio,bm25,9,94541,15.7836,94541,7.1744
+dog friendly patio,bm25,10,416250,15.6207,416250,7.1003
+dog friendly patio,tfidf,1,27883,0.7268,392871,3.5896
+dog friendly patio,tfidf,2,115717,0.5741,592718,3.5896
+dog friendly patio,tfidf,3,94541,0.5581,634080,3.5779
+dog friendly patio,tfidf,4,634080,0.5557,115717,3.4871
+dog friendly patio,tfidf,5,308747,0.554,641072,3.4679
+dog friendly patio,tfidf,6,122603,0.5156,95712,3.2575
+dog friendly patio,tfidf,7,139370,0.5136,27883,3.1657
+dog friendly patio,tfidf,8,245808,0.5031,94541,3.1657
+dog friendly patio,tfidf,9,592718,0.4923,278973,3.0033
+dog friendly patio,tfidf,10,348402,0.4894,191278,3.0033
+vegan gluten-free options,bm25,1,33172,23.4546,33172,10.6612
+vegan gluten-free options,bm25,2,518009,22.4665,518009,10.212
+vegan gluten-free options,bm25,3,461191,21.7036,461191,9.8653
+vegan gluten-free options,bm25,4,459245,20.9241,459245,9.5494
+vegan gluten-free options,bm25,5,98706,20.7151,98706,9.5041
+vegan gluten-free options,bm25,6,167657,20.4862,167657,9.3556
+vegan gluten-free options,bm25,7,64034,20.1111,64034,9.1834
+vegan gluten-free options,bm25,8,670571,19.8311,670571,9.1151
+vegan gluten-free options,bm25,9,205722,19.727,205722,8.9668
+vegan gluten-free options,bm25,10,593865,19.727,593865,8.9668
+vegan gluten-free options,tfidf,1,33172,0.7524,430971,5.4347
+vegan gluten-free options,tfidf,2,291413,0.7395,33172,5.1672
+vegan gluten-free options,tfidf,3,318143,0.6593,83363,4.4022
+vegan gluten-free options,tfidf,4,430971,0.641,318143,4.2371
+vegan gluten-free options,tfidf,5,482067,0.6165,447485,4.0187
+vegan gluten-free options,tfidf,6,518009,0.5859,516853,4.0187
+vegan gluten-free options,tfidf,7,461191,0.5523,291413,3.9947
+vegan gluten-free options,tfidf,8,403834,0.5354,403834,3.8429
+vegan gluten-free options,tfidf,9,548349,0.5125,314304,3.7206
+vegan gluten-free options,tfidf,10,514133,0.5004,518009,3.6717
+rude staff long wait,bm25,1,107363,17.6021,107363,8.001
+rude staff long wait,bm25,2,113122,16.3597,113122,7.4362
+rude staff long wait,bm25,3,560591,15.8224,560591,7.192
+rude staff long wait,bm25,4,115554,15.7454,115554,7.1762
+rude staff long wait,bm25,5,453241,15.7128,453241,7.1422
+rude staff long wait,bm25,6,546366,15.7128,546366,7.1422
+rude staff long wait,bm25,7,3646,14.7152,3646,6.6887
+rude staff long wait,bm25,8,670511,14.1075,670511,6.4125
+rude staff long wait,bm25,9,108,13.6333,600317,6.2418
+rude staff long wait,bm25,10,600317,13.5618,108,6.1969
+rude staff long wait,tfidf,1,107363,0.7615,107363,6.0469
+rude staff long wait,tfidf,2,541699,0.4739,113122,3.4912
+rude staff long wait,tfidf,3,570605,0.4718,295204,3.0656
+rude staff long wait,tfidf,4,604583,0.457,453241,2.9623
+rude staff long wait,tfidf,5,660955,0.4559,546366,2.9623
+rude staff long wait,tfidf,6,113122,0.4547,373745,2.8867
+rude staff long wait,tfidf,7,622417,0.4301,670511,2.8787
+rude staff long wait,tfidf,8,542213,0.4152,467475,2.8075
+rude staff long wait,tfidf,9,670511,0.4035,560591,2.8072
+rude staff long wait,tfidf,10,348085,0.3963,362169,2.7982
+romantic dinner for a date night with great wine,bm25,1,56217,25.6515,56217,11.6598
+romantic dinner for a date night with great wine,bm25,2,47067,24.2319,47067,11.0145
+romantic dinner for a date night with great wine,bm25,3,436097,24.0454,436097,10.9862
+romantic dinner for a date night with great wine,bm25,4,516083,23.2917,516083,10.5871
+romantic dinner for a date night with great wine,bm25,5,93517,23.0947,93517,10.4976
+romantic dinner for a date night with great wine,bm25,6,101549,22.6032,67566,10.3985
+romantic dinner for a date night with great wine,bm25,7,67566,22.5813,549152,10.2765
+romantic dinner for a date night with great wine,bm25,8,549152,22.4995,101549,10.2742
+romantic dinner for a date night with great wine,bm25,9,24404,22.363,26017,10.2465
+romantic dinner for a date night with great wine,bm25,10,26017,22.305,24404,10.165
+romantic dinner for a date night with great wine,tfidf,1,24404,0.7298,24404,5.5591
+romantic dinner for a date night with great wine,tfidf,2,649359,0.5232,56217,5.4099
+romantic dinner for a date night with great wine,tfidf,3,350266,0.5129,350266,4.948
+romantic dinner for a date night with great wine,tfidf,4,634447,0.4958,201281,4.557
+romantic dinner for a date night with great wine,tfidf,5,432668,0.4885,101549,4.4749
+romantic dinner for a date night with great wine,tfidf,6,118034,0.4548,432668,4.4681
+romantic dinner for a date night with great wine,tfidf,7,315274,0.4545,215400,4.2394
+romantic dinner for a date night with great wine,tfidf,8,265894,0.4463,285220,4.2153
+romantic dinner for a date night with great wine,tfidf,9,590485,0.4416,315274,4.1911
+romantic dinner for a date night with great wine,tfidf,10,315751,0.4371,238005,4.1879
+$5 happy hour,bm25,1,638528,18.5776,638528,8.4443
+$5 happy hour,bm25,2,361016,18.5149,361016,8.4159
+$5 happy hour,bm25,3,370999,18.2944,370999,8.4034
+$5 happy hour,bm25,4,301120,18.1617,451393,8.2747
+$5 happy hour,bm25,5,451393,18.1054,301120,8.2553
+$5 happy hour,bm25,6,365332,17.9102,365332,8.141
+$5 happy hour,bm25,7,27563,17.7569,27563,8.0713
+$5 happy hour,bm25,8,297073,17.7262,297073,8.0574
+$5 happy hour,bm25,9,278329,17.6766,278329,8.0551
+$5 happy hour,bm25,10,424045,17.5817,424045,8.0149
+$5 happy hour,tfidf,1,638528,0.5486,638528,4.2831
+$5 happy hour,tfidf,2,504265,0.5233,297073,3.9951
+$5 happy hour,tfidf,3,365332,0.5115,39986,3.657
+$5 happy hour,tfidf,4,328857,0.4994,571269,3.6283
+$5 happy hour,tfidf,5,422611,0.4984,365332,3.6171
+$5 happy hour,tfidf,6,477666,0.4933,569401,3.5987
+$5 happy hour,tfidf,7,278329,0.4772,305859,3.4973
+$5 happy hour,tfidf,8,361016,0.4671,312744,3.4854
+$5 happy hour,tfidf,9,144378,0.4645,566511,3.4068
+$5 happy hour,tfidf,10,299982,0.4627,361016,3.3926
+best sushi in philadelphia,bm25,1,390510,17.9041,390510,8.1382
+best sushi in philadelphia,bm25,2,166510,17.8541,166510,8.1155
+best sushi in philadelphia,bm25,3,58436,17.0915,58436,7.7688
+best sushi in philadelphia,bm25,4,647038,16.7977,647038,7.6353
+best sushi in philadelphia,bm25,5,518797,16.4578,518797,7.4808
+best sushi in philadelphia,bm25,6,987,16.1896,987,7.3589
+best sushi in philadelphia,bm25,7,24491,15.5524,24491,7.0692
+best sushi in philadelphia,bm25,8,293437,15.3114,293437,6.9851
+best sushi in philadelphia,bm25,9,570326,15.1703,570326,6.8956
+best sushi in philadelphia,bm25,10,94912,15.0038,94912,6.8826
+best sushi in philadelphia,tfidf,1,166510,0.7726,166510,5.683
+best sushi in philadelphia,tfidf,2,19610,0.7187,390510,3.756
+best sushi in philadelphia,tfidf,3,390510,0.6477,647038,3.6467
+best sushi in philadelphia,tfidf,4,987,0.5599,19610,3.367
+best sushi in philadelphia,tfidf,5,647038,0.5043,58436,3.3403
+best sushi in philadelphia,tfidf,6,308838,0.4748,539262,3.2308
+best sushi in philadelphia,tfidf,7,55333,0.4435,269353,3.2036
+best sushi in philadelphia,tfidf,8,231876,0.4368,478019,3.1497
+best sushi in philadelphia,tfidf,9,54919,0.4364,624274,3.0955
+best sushi in philadelphia,tfidf,10,93886,0.4356,308838,3.0804

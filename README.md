@@ -103,5 +103,24 @@ per-query statistics, and conclusions are saved under `outputs/task_3_3_2/`.
 `SearchEngine` from `tasks.task_3_3_2` and call
 `engine.search(query, k, method)`.
 
+### Optional: comparison with Lucene
+
+This step needs Java 21 (`JAVA_HOME` set, or `java` on the `PATH`) and the
+Lucene jar bundled with Pyserini. Install Pyserini without its dependencies,
+which include several gigabytes of deep-learning packages that this step does
+not use:
+
+```powershell
+python -m pip install --no-deps pyserini==2.4.0
+python -m pip install pyjnius
+python -m tasks.task_3_3_2_lucene build
+python -m tasks.task_3_3_2_lucene compare
+```
+
+`build` indexes the same sample with Lucene under `data/lucene_index/` in
+about 1.5 minutes. `compare` ranks the analysis queries with Lucene's
+`BM25Similarity` and `ClassicSimilarity` and saves the comparison under
+`outputs/task_3_3_2/`.
+
 If a cache already exists, delete its directory before intentionally rebuilding
 it.

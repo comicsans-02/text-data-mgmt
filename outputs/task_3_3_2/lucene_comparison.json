@@ -1,0 +1,130 @@
+[
+  {
+    "query": "pho",
+    "bm25_vs_lucene_BM25Similarity": {
+      "shared": 9,
+      "jaccard": 0.818,
+      "mean_rank_shift": 0.0,
+      "same_order": false,
+      "mean_score_ratio": 2.1979
+    },
+    "tfidf_vs_lucene_ClassicSimilarity": {
+      "shared": 3,
+      "jaccard": 0.176,
+      "mean_rank_shift": 2.0,
+      "same_order": false
+    }
+  },
+  {
+    "query": "terrible",
+    "bm25_vs_lucene_BM25Similarity": {
+      "shared": 10,
+      "jaccard": 1.0,
+      "mean_rank_shift": 0.2,
+      "same_order": false,
+      "mean_score_ratio": 2.1972
+    },
+    "tfidf_vs_lucene_ClassicSimilarity": {
+      "shared": 4,
+      "jaccard": 0.25,
+      "mean_rank_shift": 2.75,
+      "same_order": false
+    }
+  },
+  {
+    "query": "dog friendly patio",
+    "bm25_vs_lucene_BM25Similarity": {
+      "shared": 10,
+      "jaccard": 1.0,
+      "mean_rank_shift": 0.0,
+      "same_order": true,
+      "mean_score_ratio": 2.1996
+    },
+    "tfidf_vs_lucene_ClassicSimilarity": {
+      "shared": 5,
+      "jaccard": 0.333,
+      "mean_rank_shift": 4.2,
+      "same_order": false
+    }
+  },
+  {
+    "query": "vegan gluten-free options",
+    "bm25_vs_lucene_BM25Similarity": {
+      "shared": 10,
+      "jaccard": 1.0,
+      "mean_rank_shift": 0.0,
+      "same_order": true,
+      "mean_score_ratio": 2.1926
+    },
+    "tfidf_vs_lucene_ClassicSimilarity": {
+      "shared": 6,
+      "jaccard": 0.429,
+      "mean_rank_shift": 2.33,
+      "same_order": false
+    }
+  },
+  {
+    "query": "rude staff long wait",
+    "bm25_vs_lucene_BM25Similarity": {
+      "shared": 10,
+      "jaccard": 1.0,
+      "mean_rank_shift": 0.2,
+      "same_order": false,
+      "mean_score_ratio": 2.1967
+    },
+    "tfidf_vs_lucene_ClassicSimilarity": {
+      "shared": 3,
+      "jaccard": 0.176,
+      "mean_rank_shift": 2.0,
+      "same_order": false
+    }
+  },
+  {
+    "query": "romantic dinner for a date night with great wine",
+    "bm25_vs_lucene_BM25Similarity": {
+      "shared": 10,
+      "jaccard": 1.0,
+      "mean_rank_shift": 0.6,
+      "same_order": false,
+      "mean_score_ratio": 2.1927
+    },
+    "tfidf_vs_lucene_ClassicSimilarity": {
+      "shared": 4,
+      "jaccard": 0.25,
+      "mean_rank_shift": 0.75,
+      "same_order": false
+    }
+  },
+  {
+    "query": "$5 happy hour",
+    "bm25_vs_lucene_BM25Similarity": {
+      "shared": 10,
+      "jaccard": 1.0,
+      "mean_rank_shift": 0.2,
+      "same_order": false,
+      "mean_score_ratio": 2.1953
+    },
+    "tfidf_vs_lucene_ClassicSimilarity": {
+      "shared": 3,
+      "jaccard": 0.176,
+      "mean_rank_shift": 1.33,
+      "same_order": false
+    }
+  },
+  {
+    "query": "best sushi in philadelphia",
+    "bm25_vs_lucene_BM25Similarity": {
+      "shared": 10,
+      "jaccard": 1.0,
+      "mean_rank_shift": 0.0,
+      "same_order": true,
+      "mean_score_ratio": 2.1972
+    },
+    "tfidf_vs_lucene_ClassicSimilarity": {
+      "shared": 5,
+      "jaccard": 0.333,
+      "mean_rank_shift": 1.8,
+      "same_order": false
+    }
+  }
+]

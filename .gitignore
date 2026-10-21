@@ -9,4 +9,5 @@ data/raw/
 data/cache/
 data/nltk_data/
 data/index/
+data/lucene_index/
 .DS_Store

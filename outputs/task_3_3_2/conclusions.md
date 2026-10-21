@@ -95,6 +95,41 @@ Full rankings are in `rankings.csv`, and per-query statistics are in
    "$5" is indexed as `5` + `usd`. A review containing "$5" therefore matches
    both terms, but "5 dollars" matches only `5`.
 
+## Comparison with Lucene
+
+The same sampled reviews were indexed with Apache Lucene 10, through the
+Anserini jar that ships with Pyserini (`tasks/task_3_3_2_lucene.py`). Each
+review was passed to Lucene as custom-tokenizer output and indexed with a
+whitespace analyzer, so both systems see identical terms. Queries are Boolean
+OR queries with one clause per query token. Full results are in
+`lucene_comparison.json` and `lucene_rankings.csv`.
+
+| Query | Our BM25 vs Lucene `BM25Similarity`: shared / mean rank shift | Score ratio | Our TF-IDF vs Lucene `ClassicSimilarity`: shared |
+|---|---|---|---|
+| pho | 9 / 0.0 | 2.198 | 3 |
+| terrible | 10 / 0.2 | 2.197 | 4 |
+| dog friendly patio | 10 / 0.0 | 2.200 | 5 |
+| vegan gluten-free options | 10 / 0.0 | 2.193 | 6 |
+| rude staff long wait | 10 / 0.2 | 2.197 | 3 |
+| romantic dinner for a date night with great wine | 10 / 0.6 | 2.193 | 4 |
+| $5 happy hour | 10 / 0.2 | 2.195 | 3 |
+| best sushi in philadelphia | 10 / 0.0 | 2.197 | 5 |
+
+1. **BM25 agrees almost exactly.** The top-10 lists share 9–10 documents for
+   every query, and three queries have an identical order. Every score ratio is
+   about 2.2, which equals k1 + 1. Lucene omits the (k1 + 1) numerator factor
+   because it is constant across documents and cannot change the ranking.
+2. **The remaining BM25 differences come from Lucene's length encoding.**
+   Lucene stores each document length in a single byte (`SmallFloat`), so
+   lengths are approximate. Near-tied documents can therefore swap places, and
+   for "pho" one tenth-place document is replaced. Our implementation uses
+   exact lengths.
+3. **TF-IDF agrees much less, by design.** Lucene's `ClassicSimilarity` is not
+   cosine similarity. It uses √tf, idf = 1 + ln((N + 1) / (df + 1)), and a
+   1/√length norm, and it never divides by the full document vector length.
+   It therefore rewards short documents less extremely than our true cosine
+   does. The two lists share only 3–6 of their top-10 documents.
+
 ## Limitations
 
 - **Sample size:** the index covers a 10% sample. The same code indexes the
