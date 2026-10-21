@@ -1,0 +1,12 @@
+{
+  "sample_fraction": 0.1,
+  "sample_seed": 42,
+  "documents": 699028,
+  "vocabulary_size": 245428,
+  "postings": 49209004,
+  "total_tokens": 73564962,
+  "average_document_length": 105.23893463495024,
+  "empty_documents": 3,
+  "build_minutes": 1.12,
+  "tokenizer": "custom_tokenize from task 3.2.2"
+}

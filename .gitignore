@@ -8,3 +8,5 @@ __pycache__/
 data/raw/
 data/cache/
 data/nltk_data/
+data/index/
+.DS_Store

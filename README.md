@@ -1,6 +1,6 @@
 # AI6122 Yelp Analysis
 
-Python implementation for assignment tasks 3.1, 3.2.1, and 3.2.2.
+Python implementation for assignment tasks 3.1, 3.2.1, 3.2.2, 3.3.1, and 3.3.2.
 
 ## Setup
 
@@ -75,6 +75,33 @@ on a reproducible random 10% sample. It writes vocabulary counts, frequent
 tokens, real-review qualitative examples, and report-ready conclusions under
 `outputs/task_3_2_2/`. The completed run takes about 15 minutes on the original
 development machine.
+
+## Task 3.3.1: inverted index
+
+```powershell
+python -m tasks.task_3_3_1
+```
+
+This tokenizes the same reproducible 10% review sample as task 3.2.2 with the
+custom tokenizer and writes the inverted index to `data/index/`. It takes
+about a minute with 8 worker processes. Use `--fraction 1.0` to index every
+review, which needs much more memory, and `--workers` to change the process
+count.
+
+## Task 3.3.2: TF-IDF cosine and BM25 ranking
+
+```powershell
+python -m tasks.task_3_3_2 analyze
+python -m tasks.task_3_3_2 search "dog friendly patio" --method bm25 -k 10
+```
+
+`analyze` runs the report query set through TF-IDF cosine, BM25
+(k1 = 1.2, b = 0.75), and two BM25 parameter variants. It also verifies each
+top-10 score against a direct recomputation from the raw text. Rankings,
+per-query statistics, and conclusions are saved under `outputs/task_3_3_2/`.
+`search` prints ranked reviews for any query. Other modules can import
+`SearchEngine` from `tasks.task_3_3_2` and call
+`engine.search(query, k, method)`.
 
 If a cache already exists, delete its directory before intentionally rebuilding
 it.

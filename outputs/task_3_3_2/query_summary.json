@@ -1,0 +1,399 @@
+{
+  "index": {
+    "sample_fraction": 0.1,
+    "sample_seed": 42,
+    "documents": 699028,
+    "vocabulary_size": 245428,
+    "postings": 49209004,
+    "total_tokens": 73564962,
+    "average_document_length": 105.23893463495024,
+    "empty_documents": 3,
+    "build_minutes": 1.12,
+    "tokenizer": "custom_tokenize from task 3.2.2"
+  },
+  "parameters": {
+    "k1": 1.2,
+    "b": 0.75,
+    "top_k": 10
+  },
+  "queries": [
+    {
+      "query": "pho",
+      "tokens": [
+        "pho"
+      ],
+      "document_frequency": {
+        "pho": 4539
+      },
+      "matching_any_term": 4539,
+      "matching_all_terms": 4539,
+      "mean_result_length": {
+        "tfidf": 21.1,
+        "bm25": 57.2,
+        "bm25_b0": 435.6,
+        "bm25_k1_3": 57.2
+      },
+      "mean_result_stars": {
+        "tfidf": 4.5,
+        "bm25": 3.7,
+        "bm25_b0": 3.9,
+        "bm25_k1_3": 3.7
+      },
+      "tfidf_vs_bm25": {
+        "shared": 1,
+        "jaccard": 0.053,
+        "mean_rank_shift": 3.0
+      },
+      "bm25_vs_bm25_b0": {
+        "shared": 0,
+        "jaccard": 0.0,
+        "mean_rank_shift": null
+      },
+      "bm25_vs_bm25_k1_3": {
+        "shared": 10,
+        "jaccard": 1.0,
+        "mean_rank_shift": 0.0
+      },
+      "max_score_error": {
+        "tfidf": 4.8556254333198545e-05,
+        "bm25": 4.5212071768219175e-05
+      }
+    },
+    {
+      "query": "terrible",
+      "tokens": [
+        "terrible"
+      ],
+      "document_frequency": {
+        "terrible": 14687
+      },
+      "matching_any_term": 14687,
+      "matching_all_terms": 14687,
+      "mean_result_length": {
+        "tfidf": 17.1,
+        "bm25": 36.6,
+        "bm25_b0": 252.5,
+        "bm25_k1_3": 36.6
+      },
+      "mean_result_stars": {
+        "tfidf": 1.2,
+        "bm25": 1.1,
+        "bm25_b0": 1.1,
+        "bm25_k1_3": 1.1
+      },
+      "tfidf_vs_bm25": {
+        "shared": 2,
+        "jaccard": 0.111,
+        "mean_rank_shift": 3.0
+      },
+      "bm25_vs_bm25_b0": {
+        "shared": 2,
+        "jaccard": 0.111,
+        "mean_rank_shift": 3.0
+      },
+      "bm25_vs_bm25_k1_3": {
+        "shared": 10,
+        "jaccard": 1.0,
+        "mean_rank_shift": 0.0
+      },
+      "max_score_error": {
+        "tfidf": 4.491194401645693e-05,
+        "bm25": 3.8913520745254004e-05
+      }
+    },
+    {
+      "query": "dog friendly patio",
+      "tokens": [
+        "dog",
+        "friendly",
+        "patio"
+      ],
+      "document_frequency": {
+        "dog": 10205,
+        "friendly": 96488,
+        "patio": 10233
+      },
+      "matching_any_term": 112295,
+      "matching_all_terms": 284,
+      "mean_result_length": {
+        "tfidf": 27.3,
+        "bm25": 27.6,
+        "bm25_b0": 277.9,
+        "bm25_k1_3": 27.6
+      },
+      "mean_result_stars": {
+        "tfidf": 3.9,
+        "bm25": 3.9,
+        "bm25_b0": 3.2,
+        "bm25_k1_3": 3.9
+      },
+      "tfidf_vs_bm25": {
+        "shared": 6,
+        "jaccard": 0.429,
+        "mean_rank_shift": 4.5
+      },
+      "bm25_vs_bm25_b0": {
+        "shared": 1,
+        "jaccard": 0.053,
+        "mean_rank_shift": 0.0
+      },
+      "bm25_vs_bm25_k1_3": {
+        "shared": 10,
+        "jaccard": 1.0,
+        "mean_rank_shift": 0.0
+      },
+      "max_score_error": {
+        "tfidf": 4.762826911219875e-05,
+        "bm25": 4.767580026410201e-05
+      }
+    },
+    {
+      "query": "vegan gluten-free options",
+      "tokens": [
+        "vegan",
+        "gluten-free",
+        "options"
+      ],
+      "document_frequency": {
+        "vegan": 7125,
+        "gluten-free": 837,
+        "options": 26893
+      },
+      "matching_any_term": 32339,
+      "matching_all_terms": 69,
+      "mean_result_length": {
+        "tfidf": 16.7,
+        "bm25": 42.4,
+        "bm25_b0": 249.6,
+        "bm25_k1_3": 39.2
+      },
+      "mean_result_stars": {
+        "tfidf": 4.8,
+        "bm25": 4.9,
+        "bm25_b0": 3.9,
+        "bm25_k1_3": 4.9
+      },
+      "tfidf_vs_bm25": {
+        "shared": 3,
+        "jaccard": 0.176,
+        "mean_rank_shift": 2.67
+      },
+      "bm25_vs_bm25_b0": {
+        "shared": 1,
+        "jaccard": 0.053,
+        "mean_rank_shift": 5.0
+      },
+      "bm25_vs_bm25_k1_3": {
+        "shared": 9,
+        "jaccard": 0.818,
+        "mean_rank_shift": 0.33
+      },
+      "max_score_error": {
+        "tfidf": 4.791296825068514e-05,
+        "bm25": 4.833346953603268e-05
+      }
+    },
+    {
+      "query": "rude staff long wait",
+      "tokens": [
+        "rude",
+        "staff",
+        "long",
+        "wait"
+      ],
+      "document_frequency": {
+        "rude": 17468,
+        "staff": 99630,
+        "long": 44309,
+        "wait": 62420
+      },
+      "matching_any_term": 185928,
+      "matching_all_terms": 137,
+      "mean_result_length": {
+        "tfidf": 17.9,
+        "bm25": 37.2,
+        "bm25_b0": 453.5,
+        "bm25_k1_3": 30.6
+      },
+      "mean_result_stars": {
+        "tfidf": 2.1,
+        "bm25": 1.4,
+        "bm25_b0": 1.7,
+        "bm25_k1_3": 1.8
+      },
+      "tfidf_vs_bm25": {
+        "shared": 3,
+        "jaccard": 0.176,
+        "mean_rank_shift": 1.67
+      },
+      "bm25_vs_bm25_b0": {
+        "shared": 1,
+        "jaccard": 0.053,
+        "mean_rank_shift": 0.0
+      },
+      "bm25_vs_bm25_k1_3": {
+        "shared": 8,
+        "jaccard": 0.667,
+        "mean_rank_shift": 0.5
+      },
+      "max_score_error": {
+        "tfidf": 4.683692760626412e-05,
+        "bm25": 4.762304906869019e-05
+      }
+    },
+    {
+      "query": "romantic dinner for a date night with great wine",
+      "tokens": [
+        "romantic",
+        "dinner",
+        "for",
+        "a",
+        "date",
+        "night",
+        "with",
+        "great",
+        "wine"
+      ],
+      "document_frequency": {
+        "romantic": 2259,
+        "dinner": 42988,
+        "for": 414493,
+        "a": 543697,
+        "date": 10640,
+        "night": 52719,
+        "with": 325360,
+        "great": 224262,
+        "wine": 19797
+      },
+      "matching_any_term": 643681,
+      "matching_all_terms": 7,
+      "mean_result_length": {
+        "tfidf": 23.0,
+        "bm25": 42.7,
+        "bm25_b0": 498.7,
+        "bm25_k1_3": 32.1
+      },
+      "mean_result_stars": {
+        "tfidf": 4.6,
+        "bm25": 4.9,
+        "bm25_b0": 4.4,
+        "bm25_k1_3": 4.6
+      },
+      "tfidf_vs_bm25": {
+        "shared": 1,
+        "jaccard": 0.053,
+        "mean_rank_shift": 8.0
+      },
+      "bm25_vs_bm25_b0": {
+        "shared": 0,
+        "jaccard": 0.0,
+        "mean_rank_shift": null
+      },
+      "bm25_vs_bm25_k1_3": {
+        "shared": 7,
+        "jaccard": 0.538,
+        "mean_rank_shift": 2.29
+      },
+      "max_score_error": {
+        "tfidf": 3.921275881785258e-05,
+        "bm25": 4.363800335838164e-05
+      }
+    },
+    {
+      "query": "$5 happy hour",
+      "tokens": [
+        "5",
+        "usd",
+        "happy",
+        "hour"
+      ],
+      "document_frequency": {
+        "5": 50233,
+        "usd": 71986,
+        "happy": 39489,
+        "hour": 32847
+      },
+      "matching_any_term": 154861,
+      "matching_all_terms": 1100,
+      "mean_result_length": {
+        "tfidf": 31.5,
+        "bm25": 59.5,
+        "bm25_b0": 310.5,
+        "bm25_k1_3": 57.4
+      },
+      "mean_result_stars": {
+        "tfidf": 3.6,
+        "bm25": 3.8,
+        "bm25_b0": 4.0,
+        "bm25_k1_3": 4.0
+      },
+      "tfidf_vs_bm25": {
+        "shared": 4,
+        "jaccard": 0.25,
+        "mean_rank_shift": 2.75
+      },
+      "bm25_vs_bm25_b0": {
+        "shared": 2,
+        "jaccard": 0.111,
+        "mean_rank_shift": 3.0
+      },
+      "bm25_vs_bm25_k1_3": {
+        "shared": 9,
+        "jaccard": 0.818,
+        "mean_rank_shift": 0.67
+      },
+      "max_score_error": {
+        "tfidf": 4.813650262514013e-05,
+        "bm25": 4.289597109874421e-05
+      }
+    },
+    {
+      "query": "best sushi in philadelphia",
+      "tokens": [
+        "best",
+        "sushi",
+        "in",
+        "philadelphia"
+      ],
+      "document_frequency": {
+        "best": 104982,
+        "sushi": 15338,
+        "in": 394783,
+        "philadelphia": 6051
+      },
+      "matching_any_term": 431529,
+      "matching_all_terms": 67,
+      "mean_result_length": {
+        "tfidf": 19.2,
+        "bm25": 42.4,
+        "bm25_b0": 441.5,
+        "bm25_k1_3": 32.2
+      },
+      "mean_result_stars": {
+        "tfidf": 5.0,
+        "bm25": 4.5,
+        "bm25_b0": 4.6,
+        "bm25_k1_3": 4.7
+      },
+      "tfidf_vs_bm25": {
+        "shared": 4,
+        "jaccard": 0.25,
+        "mean_rank_shift": 1.5
+      },
+      "bm25_vs_bm25_b0": {
+        "shared": 1,
+        "jaccard": 0.053,
+        "mean_rank_shift": 6.0
+      },
+      "bm25_vs_bm25_k1_3": {
+        "shared": 8,
+        "jaccard": 0.667,
+        "mean_rank_shift": 0.0
+      },
+      "max_score_error": {
+        "tfidf": 4.827055614964326e-05,
+        "bm25": 4.7182697635150816e-05
+      }
+    }
+  ]
+}
