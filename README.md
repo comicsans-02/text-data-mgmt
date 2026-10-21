@@ -12,6 +12,8 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
+On macOS or Linux, activate with `source .venv/bin/activate` instead.
+
 Run all commands below from the project root.
 
 Download the Yelp Open Dataset after accepting Yelp's dataset agreement. Put
@@ -24,6 +26,18 @@ data/raw/yelp_academic_dataset_review.json
 
 The raw data and generated caches are excluded from Git.
 
+Allow about 16 GB of free disk space:
+
+| Item | Size |
+|---|---|
+| Raw JSON files in `data/raw/` | 5.5 GB |
+| Arrow cache in `data/cache/` | 4.7 GB |
+| Temporary copy in `~/.cache/huggingface/datasets/json/` | 4.6 GB |
+| Search indexes in `data/index/` and `data/lucene_index/` | 0.5 GB |
+
+The temporary Hugging Face copy is not used after `data/cache/` has been
+built, so it can be deleted.
+
 ## Build the reusable Arrow cache
 
 ```powershell
@@ -33,6 +47,9 @@ python -m utils.build_cache
 This reads each JSON Lines file and writes memory-mapped Hugging Face Arrow
 datasets under `data/cache/businesses/` and `data/cache/reviews/`. The cache
 retains every source column for reuse by the other assignment tasks.
+
+If a cache already exists, delete its directory before intentionally rebuilding
+it.
 
 To verify an existing cache:
 
@@ -99,8 +116,28 @@ python -m tasks.task_3_3_2 search "dog friendly patio" --method bm25 -k 10
 (k1 = 1.2, b = 0.75), and two BM25 parameter variants. It also verifies each
 top-10 score against a direct recomputation from the raw text. Rankings,
 per-query statistics, and conclusions are saved under `outputs/task_3_3_2/`.
-`search` prints ranked reviews for any query. Other modules can import
-`SearchEngine` from `tasks.task_3_3_2` and call
+`search` prints ranked reviews for any query. For example,
+`search "dog friendly patio" -k 2` prints:
+
+```text
+ 1. 17.7054  Risky Business (Tucson) 1★, 81 tokens
+    When I called they said they have a dog friendly patio, so we took our ...
+ 2. 16.8855  Boathouse at Hendry's Beach (Santa Barbara) 2★, 19 tokens
+    Their idea of dog friendly is tie your dog outside the patio! Just not ...
+```
+
+Each result shows:
+
+- its rank and score (BM25 scores are unbounded; TF-IDF cosine scores lie
+  between 0 and 1)
+- the reviewed business and its city
+- the review's star rating and its length in custom-tokenizer tokens
+- the first 200 characters of the review
+
+Both top results are complaints. Bag-of-words ranking matches the query terms
+but cannot see negation or sentiment.
+
+Other modules can import `SearchEngine` from `tasks.task_3_3_2` and call
 `engine.search(query, k, method)`.
 
 ### Optional: comparison with Lucene
@@ -121,6 +158,3 @@ python -m tasks.task_3_3_2_lucene compare
 about 1.5 minutes. `compare` ranks the analysis queries with Lucene's
 `BM25Similarity` and `ClassicSimilarity` and saves the comparison under
 `outputs/task_3_3_2/`.
-
-If a cache already exists, delete its directory before intentionally rebuilding
-it.
