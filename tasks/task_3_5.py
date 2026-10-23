@@ -89,8 +89,38 @@ def _rx(p):
 
 # Words right after "than" / "as" that mean the comparison is with an expectation
 # or with the same business at another time, not with another business.
-_SELF_AFTER = (r"i|we|you|expected|anticipated|thought|usual|always|before|ever|last|it|they|"
+_SELF_AFTER = (r"i|we|you|he|she|expected|anticipated|thought|usual|always|before|ever|last|it|they|"
                r"average|advertised|necessary|needed|ideal|normal")
+
+# Nouns that name a business (or a group of them).  If the thing compared against
+# contains one of these, it is another business, not a part of the same one.
+_BUSINESS_NOUN = (r"places?|restaurants?|spots?|joints?|shops?|stores?|bars?|pubs?|cafes?|bakery|bakeries|"
+                  r"diners?|locations?|branch(?:es)?|chains?|hotels?|motels?|salons?|spas?|gyms?|dentists?|"
+                  r"doctors?|barbers?|mechanics?|dealers(?:hips?)?|dealerships?|competition|competitors?|"
+                  r"ones?|franchises?|buffets?|pizzerias?|steakhouses?|brewer(?:y|ies)|establishments?|"
+                  r"business(?:es)?|clinics?|vets?|stalls?|trucks?")
+# A target such as "the chicken", "the first floor", "our first visit" or "on my previous
+# visit": starts with a determiner and contains no business noun, place cue or capitalised name.
+_DETERMINER_TARGET = re.compile(r"^(?:(?:on|during|from|at|in)\s+)?(?:the|my|our|his|her|their|this|that)\s+",
+                                re.I)
+_OTHER_BUSINESS_CUE = re.compile(r"\b(?:" + _BUSINESS_NOUN + r"|elsewhere|other|another|any|most|every|all)\b"
+                                 r"|\b(?:at|in|from|of)\s+(?-i:[A-Z])|(?-i:\b[A-Z][a-z]+)", re.I)
+
+
+def _same_business_target(text_after):
+    """True when the words after 'than' / 'compared to' name something of the SAME business.
+
+    'the chicken', 'the first floor', 'our first visit', 'on my previous visit'  -> True
+    'the Starbucks next door', 'the one on Main St', 'most places', 'my usual barber' -> False
+    """
+    words = text_after.strip()
+    # Stop at the end of the clause: only the compared-against phrase matters.
+    target = re.split(r"[.,;:!?()]|\b(?:and|but|because|so|which|who)\b", words, maxsplit=1)[0]
+    target = " ".join(target.split()[:6])
+    if not _DETERMINER_TARGET.match(target):
+        return False
+    rest = _DETERMINER_TARGET.sub("", target, count=1)
+    return not _OTHER_BUSINESS_CUE.search(rest)
 
 # (a) EXPLICIT comparison phrases.  One match is enough to add +2 to the score.
 EXPLICIT = [
@@ -121,7 +151,28 @@ EXPLICIT = [
         r"(?:other|any\s+other|most|all\s+the)\s+(?:places?|restaurants?|spots?|\w+\s+(?:places?|restaurants?))\b"),
     _rx(r"\breminds?\s+me\s+of\b"),
     _rx(r"\b(?:like|similar\s+to)\s+(?:the\s+one|that\s+(?:place|restaurant)|a\s+(?:chain|chipotle|mcdonald'?s))\b"),
+    _rx(r"\bcomparable\s+(?:to|with)\b"),                          # comparable to
+    # doesn't compare to / can't come close to / doesn't hold a candle to
+    _rx(r"\b(?:doesn'?t|does\s+not|don'?t|can'?t|cannot|won'?t|didn'?t)\s+(?:even\s+)?"
+        r"(?:compare\s+(?:to|with)|come\s+close\s+to|hold\s+a\s+candle\s+to)\b"),
+    _rx(r"\bstep\s+(?:up|down)\s+from\b"),                         # a huge step up from
+    _rx(r"\briv(?:al|als|aled|alled)\b"),                          # rivals anything in New York
+    _rx(r"\bputs?\s+.{1,40}?\s+to\s+shame\b"),                     # puts X to shame
+    _rx(r"\b(?:miles|leaps\s+and\s+bounds|head\s+and\s+shoulders|light\s+years)\s+(?:ahead\s+of|above|beyond)\b"),
+    _rx(r"\binstead\s+of\s+(?:coming|going)\b"),                   # I'll stick with X instead of coming here
+    _rx(r"\b(?:it'?s|it\s+is|this\s+is)\s+no\s+(?-i:[A-Z])"),     # it is no Cheesecake Factory
+    _rx(r"\bif\s+you\s+(?:like|love|enjoy)\s+(?-i:[A-Z])"),       # if you like Shake Shack, ...
+    _rx(r"\b(?:like|prefer|love|enjoy)\b.{1,40}\b(?:more|better)\s+than\s+(?:this|here)\b"),
+    # "we usually go to X but this was fresher"
+    _rx(r"\b(?:usually|normally|always|used\s+to)\s+go\s+to\b.{0,60}\b(?:better|worse|more|less|\w{3,}er)\b"),
 ]
+
+# Superlative forms: best, worst, most/least + adjective, favourite, and -est words
+# (skipping ordinary words that merely end in -est, such as "honest" or "guest").
+_SUP = (r"(?:best|worst|favou?rite|most\s+\w+|least\s+\w+|"
+        r"(?!(?:honest|interest|rest|request|guest|west|suggest|forest|test|contest|protest|chest|nest|"
+        r"pest|quest|vest|digest|modest|harvest|invest|arrest|manifest|attest|lest|zest|crest|jest|unrest|"
+        r"priest)\b)\w{3,}est)")
 
 # (b) COMPARATIVE "<adjective> than".  Handled in code (_comparative_than) because
 #     we must reject false positives such as "more than 2 hours".
@@ -140,14 +191,26 @@ _COMP_ADJ = re.compile(r"^(?:better|worse|cheaper|nicer|cleaner|faster|slower|bi
                        r"shorter|easier|harder|stronger|weaker|prettier|safer|busier|more\s+\w+|less\s+\w+|"
                        r"\w{3,}er)$", re.I)
 
-# (c) SCOPED SUPERLATIVES and personal-history cues.  The first two rules are worth +2,
-#     the others are weaker evidence worth +1 each (max +2 from this group).
+# (c) SCOPED SUPERLATIVES and personal-history cues.  The first STRONG_SUPERLATIVES rules
+#     rank the business against others, so they are worth +2; the others are weaker
+#     evidence worth +1 each (max +2 from this group).
+STRONG_SUPERLATIVES = 5
 SUPERLATIVE = [
     # "best ... in town / in the area / in Las Vegas ..." -> ranks the business against all others nearby
-    _rx(r"\b(?:best|worst|greatest|finest|cheapest|freshest)\b.{0,40}\b(?:in|of|around|within)\s+"
+    _rx(r"\b" + _SUP + r"\b.{0,40}\b(?:in|of|around|within|on)\s+"
         r"(?:town|the\s+(?:city|area|state|neighbou?rhood|valley|strip|world)|\w+\s+county|"
         r"(?-i:[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?))\b"),               # any capitalised place name
-    _rx(r"\b(?:best|worst)\b.{0,40}\b(?:I(?:'ve|\s+have)\s+(?:ever\s+)?(?:had|been|tried|eaten|seen|visited))\b"),
+    # "the best ... I've ever had", "the most comfortable bed I've ever slept in"
+    _rx(r"\b" + _SUP + r"\b.{0,40}\b(?:I|we)(?:(?:'ve|\s+have|'d|\s+had)\s+(?:ever\s+)?|\s+ever\s+)"
+        r"(?:had|been|tried|eaten|tasted|seen|visited|experienced|stayed|slept|used|encountered|taken|found)\b"),
+    # "of all the hotels on the strip, this one has the best pool"
+    _rx(r"\bof\s+all\s+(?:the\s+)?\w+.{0,60}?\b" + _SUP + r"\b"),
+    # "other dentists I've been to were never this thorough"
+    _rx(r"\b(?:other|every|any)\s+(?:\w+\s+)?(?:" + _BUSINESS_NOUN + r")\s+(?:I|we)(?:'ve|\s+have)?\s+"
+        r"(?:been|tried|visited|gone|used|had)\b"),
+    # "I've been to many Korean BBQ places and this ranks near the top"
+    _rx(r"\b(?:I|we)(?:'ve|\s+have)\s+(?:been\s+to|tried|visited|eaten\s+at)\s+(?:many|most|lots\s+of|"
+        r"a\s+lot\s+of|several|plenty\s+of|so\s+many|tons\s+of|all)\b"),
     _rx(r"\b(?:hands\s+down|by\s+far|far\s+and\s+away)\b"),
     _rx(r"\bone\s+of\s+the\s+(?:best|worst)\b"),
     _rx(r"\b(?:other|every|any)\s+(?:place|restaurant|spot|shop|store|salon|hotel|bar|cafe)s?\s+(?:I|we)\b"),
@@ -261,6 +324,9 @@ def _comparative_than(sentence):
         # Compared with an expectation / the same business rather than another business.
         if re.match(r"^(?:" + _SELF_AFTER + r")\b", nxt, re.I):
             continue
+        # Compared with a dish, room or earlier visit of the SAME business ("than the chicken").
+        if m.group(2) and _same_business_target(sentence[m.start(2):]):
+            continue
         # "more/less/longer ... than <number>" is a quantity.
         if prev.split()[0] in {"more", "less", "fewer", "greater", "longer", "higher", "lower", "earlier",
                                "later"} and re.match(r"^\$?\d", nxt):
@@ -283,13 +349,19 @@ def classify(sentence, index=None, bid=None, bname=None, threshold=2):
     """
     score, evidence = 0, []
 
-    # (a) explicit phrase: only the first matching phrase counts (+2)
+    # (a) explicit phrase: only the first matching phrase counts (+2).  A phrase ending in
+    #     "than / to / with / as" is skipped when it points at the same business
+    #     ("better than the last two times", "compared to our first visit").
     for rx in EXPLICIT:
         m = rx.search(sentence)
-        if m:
-            score += 2
-            evidence.append(("explicit", m.group(0).strip()))
-            break
+        if not m:
+            continue
+        if re.search(r"\b(?:than|then|to|with|as)$", m.group(0).strip(), re.I) \
+                and _same_business_target(sentence[m.end():]):
+            continue
+        score += 2
+        evidence.append(("explicit", m.group(0).strip()))
+        break
 
     # (b) "<adjective> than": +2 on its own, +1 if an explicit phrase already matched
     t = _comparative_than(sentence)
@@ -300,13 +372,13 @@ def classify(sentence, index=None, bid=None, bname=None, threshold=2):
         score += 1
         evidence.append(("comparative", t))
 
-    # (c) scoped superlatives: the first two rules ("best ... in town", "best ... I've ever had")
+    # (c) scoped superlatives: the strong rules ("best ... in town", "best ... I've ever had")
     #     rank the business against all others, so they are worth +2; the rest +1.  Max +2 in total.
     sup = 0
     for i, rx in enumerate(SUPERLATIVE):
         m = rx.search(sentence)
         if m and sup < 2:
-            pts = min(2 if i < 2 else 1, 2 - sup)
+            pts = min(2 if i < STRONG_SUPERLATIVES else 1, 2 - sup)
             sup += pts
             score += pts
             evidence.append(("scoped-superlative", m.group(0).strip()))
