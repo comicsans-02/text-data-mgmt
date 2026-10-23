@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Comparison Sentence Detector for Yelp Reviews   (AI6122 Assignment, Section 3.5)
 =============================================================================
@@ -31,19 +30,24 @@ SUB-COMMANDS
     sample    draw random REAL sentences from review.json for hand-labelling
     evaluate  precision / recall / F1 against that hand-labelled file
 
-EXAMPLES
-    python comparison_detector_project.py text "Better than Olive Garden."
-    python comparison_detector_project.py detect --review yelp_academic_dataset_review.json \
-        --business yelp_academic_dataset_business.json --limit 5000 --out results.jsonl
-    python comparison_detector_project.py sample --review yelp_academic_dataset_review.json --n 200
-    python comparison_detector_project.py evaluate --gold to_label.tsv \
-        --business yelp_academic_dataset_business.json
+EXAMPLES  (run from the project root; the Yelp files are read from data/raw/)
+    python -m tasks.task_3_5 text "Better than Olive Garden."
+    python -m tasks.task_3_5 detect --limit 5000
+    python -m tasks.task_3_5 sample --n 200
+    python -m tasks.task_3_5 evaluate --gold outputs/task_3_5/to_label.tsv
 """
 import argparse     # command-line interface
 import collections  # Counter / defaultdict for statistics
 import json         # the Yelp files are JSON-lines (one JSON object per line)
 import re           # regular expressions: the core of the rule-based NLP
 import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+RAW_DIR = ROOT / "data" / "raw"
+OUTPUT_DIR = ROOT / "outputs" / "task_3_5"
+REVIEW_FILE = RAW_DIR / "yelp_academic_dataset_review.json"
+BUSINESS_FILE = RAW_DIR / "yelp_academic_dataset_business.json"
 
 # ==========================================================================
 # 1. SENTENCE SPLITTING   (NLP step: sentence segmentation)
@@ -536,35 +540,38 @@ def main():
     t.set_defaults(fn=cmd_text)
 
     d = sub.add_parser("detect", help="run on review.json")
-    d.add_argument("--review", required=True)
-    d.add_argument("--business", required=True)
+    d.add_argument("--review", default=str(REVIEW_FILE))
+    d.add_argument("--business", default=str(BUSINESS_FILE))
     d.add_argument("--limit", type=int, default=50000, help="max reviews (0 = all)")
     d.add_argument("--threshold", type=int, default=2)
-    d.add_argument("--out", help="write detected sentences as JSON lines")
+    d.add_argument("--out", default=str(OUTPUT_DIR / "comparisons.jsonl"),
+                   help="detected sentences as JSON lines (default: outputs/task_3_5/comparisons.jsonl)")
     d.add_argument("--show", type=int, default=15, help="number of examples printed")
     d.add_argument("--min-cat", type=int, default=30,
                    help="minimum reviews for a category to appear in the ranking")
     d.set_defaults(fn=cmd_detect)
 
     sm = sub.add_parser("sample", help="draw random real sentences from review.json to hand-label")
-    sm.add_argument("--review", required=True)
+    sm.add_argument("--review", default=str(REVIEW_FILE))
     sm.add_argument("--n", type=int, default=200)
     sm.add_argument("--limit", type=int, default=50000, help="max reviews to read (0 = all)")
     sm.add_argument("--seed", type=int, default=42)
-    sm.add_argument("--out", default="to_label.tsv")
+    sm.add_argument("--out", default=str(OUTPUT_DIR / "to_label.tsv"))
     sm.set_defaults(fn=cmd_sample)
 
     e = sub.add_parser("evaluate", help="P/R/F1 on a hand-labelled TSV made by 'sample'")
     e.add_argument("--gold", required=True)
-    e.add_argument("--business", help="business.json, so other-business mentions count as in 'detect'")
+    e.add_argument("--business", default=str(BUSINESS_FILE),
+                   help="business.json, so other-business mentions count as in 'detect' ('' to skip)")
     e.add_argument("--threshold", type=int, default=2)
     e.add_argument("--show-errors", type=int, default=20)
     e.set_defaults(fn=cmd_evaluate)
 
     args = ap.parse_args()
+    if getattr(args, "out", None):             # create outputs/task_3_5/ when writing there
+        Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     args.fn(args)
 
 
 if __name__ == "__main__":
     main()
-
