@@ -4,3 +4,6 @@ nltk>=3.9,<4
 numpy>=2.2,<3
 pyarrow>=25,<26
 regex>=2024.11.6
+scipy>=1.14
+seaborn>=0.13
+vaderSentiment>=3.3.2
