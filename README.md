@@ -158,3 +158,15 @@ python -m tasks.task_3_3_2_lucene compare
 about 1.5 minutes. `compare` ranks the analysis queries with Lucene's
 `BM25Similarity` and `ClassicSimilarity` and saves the comparison under
 `outputs/task_3_3_2/`.
+
+### Task 3.4.1: Lexicon-Based Sentiment Mining
+
+Run from the project root:
+
+```bash
+python -m tasks.task_3_4_1
+```
+
+This task uses VADER to score raw review text. It analyses Fast Food, Italian, and Ice Cream & Frozen Yogurt reviews. Businesses listed in more than one of these sectors are excluded.
+
+The script saves yearly and seasonal sentiment trends, checks of star ratings and review length, example failure cases, and `summary.txt` under `outputs/task_3_4_1/`. The VADER score cache is local and should not be uploaded.
