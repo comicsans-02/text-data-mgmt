@@ -200,3 +200,32 @@ Comparison sentences are rare, so a plain random sample of a few hundred sentenc
 The 300 sentences are shuffled into `to_label.tsv` without their stratum, so labellers cannot tell which sentences the detector flagged. Group members fill the `label` column with 1 (the sentence compares the business with another business) or 0. `sample_key.json` records the stratum of each sentence and the size of each stratum. `sample` will not overwrite a `to_label.tsv` that already exists.
 
 `evaluate` compares the labels with the detector's predictions. It reports precision, recall, and F1 on the labelled sentences themselves, and estimates for all sentences in which each stratum is weighted by its size. The weighted estimates have 95% bootstrap confidence intervals and are the figures to report. Results and the list of errors are saved to `outputs/task_3_5/evaluation.json`.
+
+#### Results
+
+On the shared 10% sample (699,028 reviews, 5,412,063 sentences), `detect` flagged 136,308 sentences (2.52%) as comparisons. 119,256 reviews (17.1%) contain at least one. Reviews with a comparison average 3.98 stars, against 3.75 for all reviews. The reviewed business comes out better in 68,727 comparisons, worse in 12,713, similar in 8,798, and mixed in 2,333. In 43,737 the direction is unclear. The full statistics are in `outputs/task_3_5/summary.json`. `comparisons.jsonl` is not committed because of its size (45 MB); run `detect` to regenerate it.
+
+`sample` drew 300 sentences from 50,000 reviews outside the tuning rows. The labels in `outputs/task_3_5/to_label.tsv` follow this guideline:
+
+- 1: the sentence compares the reviewed business with other businesses, named or not ("better than DiNic's", "cheaper than other options nearby"), ranks it against other places ("best pizza in town"), compares it with places the reviewer has been to ("the worst pho I have ever had"), or compares it with another branch of the same chain.
+- 0: comparisons with expectations or with the same business on another visit, comparisons with things that are not businesses ("creamier than regular ice cream"), and praise without a comparison ("the best part is the service").
+
+The labels were drafted with an AI assistant using this guideline. If the group changes any label, rerun `evaluate` to update the scores below.
+
+| Stratum | Sentences | Labelled | Comparisons |
+|---|---:|---:|---:|
+| Flagged by the detector | 9,582 | 100 | 77 |
+| Comparison-like word, not flagged | 31,724 | 100 | 17 |
+| Other | 297,498 | 100 | 3 |
+
+Estimated for all sentences, with 95% bootstrap confidence intervals:
+
+| Metric | Estimate | 95% CI |
+|---|---:|---|
+| Precision | 0.770 | 0.680 to 0.850 |
+| Recall | 0.340 | 0.224 to 0.573 |
+| F1 | 0.472 | 0.344 to 0.663 |
+
+On the 300 labelled sentences alone, precision is 0.770, recall 0.794, and F1 0.782 (TP = 77, FP = 23, FN = 20, TN = 180). Those figures overstate recall because flagged sentences were oversampled.
+
+The rules are precise for explicit comparisons but miss implicit ones, such as "my family's favorite pizza" or "there aren't that many good sushi joints in this town". The "Other" stratum is large, so each of its 3 missed comparisons stands for about 3,000 sentences. This lowers the recall estimate and widens its interval. Most false positives compare things that are not businesses, such as "more energy than me" or "similar to Guinness". All errors are listed in `outputs/task_3_5/evaluation.json`.

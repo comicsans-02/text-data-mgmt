@@ -1,0 +1,131 @@
+{
+  "fraction": 0.1,
+  "sample_seed": 42,
+  "threshold": 2,
+  "reviews": 699028,
+  "sentences": 5412063,
+  "comparison_sentences": 136308,
+  "comparison_sentence_pct": 2.518595958694494,
+  "reviews_with_comparison": 119256,
+  "reviews_with_comparison_pct": 17.060260819309097,
+  "avg_stars_all": 3.7475623294059752,
+  "avg_stars_with_comparison": 3.979682363990072,
+  "directions": {
+    "similar": 8798,
+    "unspecified": 43737,
+    "better": 68727,
+    "worse": 12713,
+    "mixed": 2333
+  },
+  "top_categories": [
+    {
+      "category": "Cabaret",
+      "comparison_rate_pct": 31.11111111111111,
+      "reviews": 45
+    },
+    {
+      "category": "Burmese",
+      "comparison_rate_pct": 29.20353982300885,
+      "reviews": 113
+    },
+    {
+      "category": "Skiing",
+      "comparison_rate_pct": 29.166666666666668,
+      "reviews": 48
+    },
+    {
+      "category": "Poutineries",
+      "comparison_rate_pct": 28.947368421052634,
+      "reviews": 38
+    },
+    {
+      "category": "International Grocery",
+      "comparison_rate_pct": 28.859060402684566,
+      "reviews": 298
+    },
+    {
+      "category": "Donairs",
+      "comparison_rate_pct": 28.431372549019606,
+      "reviews": 102
+    },
+    {
+      "category": "Singaporean",
+      "comparison_rate_pct": 27.536231884057973,
+      "reviews": 138
+    },
+    {
+      "category": "Baseball Fields",
+      "comparison_rate_pct": 27.472527472527474,
+      "reviews": 91
+    },
+    {
+      "category": "Brazilian Jiu-jitsu",
+      "comparison_rate_pct": 27.27272727272727,
+      "reviews": 33
+    },
+    {
+      "category": "Egyptian",
+      "comparison_rate_pct": 26.82926829268293,
+      "reviews": 41
+    }
+  ],
+  "most_compared_to": [
+    {
+      "business": "indian food",
+      "mentions": 449
+    },
+    {
+      "business": "starbucks",
+      "mentions": 304
+    },
+    {
+      "business": "chinatown",
+      "mentions": 300
+    },
+    {
+      "business": "street",
+      "mentions": 241
+    },
+    {
+      "business": "chipotle",
+      "mentions": 215
+    },
+    {
+      "business": "the place",
+      "mentions": 184
+    },
+    {
+      "business": "whole foods",
+      "mentions": 168
+    },
+    {
+      "business": "geno's",
+      "mentions": 166
+    },
+    {
+      "business": "vegas",
+      "mentions": 160
+    },
+    {
+      "business": "chinese restaurant",
+      "mentions": 159
+    }
+  ],
+  "examples": [
+    "(4.0★ Broad Ripple Brewpub) [similar, score 2] Tried their Pumpkin Seasonal Beer and it's on par with some of my favorite pumpkins.",
+    "(2.0★ Trust Me BBQ) [unspecified, score 2] Cons:  Chicken was more dry than a sheet of paper, inedible even with the BBQ Sauce.",
+    "(5.0★ Wei Asian Cafe) [better, score 2] Blew $80 on food for the family was worth it food was hot and orange chicken best I've tasted in a awhile..now it will be the place we get Asian food!!",
+    "(4.0★ Whole Foods Market) [better, score 3] In the cooler months, nothing beats hitting Whole Foods for a post-yoga lunch of soup and salad or the deli salad sampler plate.",
+    "(1.0★ Mother Hubbard's Café) [worse, score 2] One of the worst places in Tucson!",
+    "(4.0★ Hendricks BBQ) [better, score 3] The meats,sauces,and sides are better than most barbecue places.Onion rings are huge and the coleslaw is tasty and finely shredded.",
+    "(2.0★ Burger Up) [unspecified, score 3] We waited forever to get into this place which served me a relatively tasteless burger on an incredibly soggy McDonald's quality bun and the saltiest fries I have ever eaten.",
+    "(3.0★ Cactus Restaurant & Bar) [unspecified, score 3] It happened by default, as most of the restaurants on Main Street were closed.",
+    "(3.0★ Magasin Kitchen) [better, score 3] The food and service were good- even the chopped was seasoned better than the other location.",
+    "(5.0★ Yellow Submarine) [better, score 2] It is way better then  anywhere I've ever been.",
+    "(5.0★ Seasons Cafe & Bakery) [similar, score 2] I had boba milk tea, which was as good as any milk tea I've had before.",
+    "(1.0★ IHOP) [worse, score 2] This was one of the worst breakfasts I've ever had.",
+    "(5.0★ Budweiser Brewery Experience) [better, score 2] This is hands down my favorite brewery in The world!!",
+    "(5.0★ Blues City Deli) [better, score 2] Best sandwiches in St.Louis!",
+    "(5.0★ Luke) [better, score 3] Way better than most hotel restaurants."
+  ]
+}

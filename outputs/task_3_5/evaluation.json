@@ -1,0 +1,269 @@
+{
+  "labelled": 300,
+  "threshold": 2,
+  "bootstrap": 1000,
+  "strata": {
+    "flagged": {
+      "population": 9582,
+      "labelled": 100,
+      "positives": 77
+    },
+    "cue": {
+      "population": 31724,
+      "labelled": 100,
+      "positives": 17
+    },
+    "other": {
+      "population": 297498,
+      "labelled": 100,
+      "positives": 3
+    }
+  },
+  "unweighted": {
+    "tp": 77,
+    "fp": 23,
+    "fn": 20,
+    "tn": 180,
+    "precision": 0.77,
+    "recall": 0.7938144329896907,
+    "f1": 0.7817258883248732
+  },
+  "weighted": {
+    "tp": 7378.1,
+    "fp": 2203.9,
+    "fn": 14318.0,
+    "tn": 314904.0,
+    "precision": 0.7699999999999999,
+    "recall": 0.3400666293021436,
+    "f1": 0.4717758333610415,
+    "precision_ci95": [
+      0.6799999999999997,
+      0.8499999999999999
+    ],
+    "recall_ci95": [
+      0.22394115775261814,
+      0.5730895519710044
+    ],
+    "f1_ci95": [
+      0.3443364752844508,
+      0.6626523283326992
+    ]
+  },
+  "errors": [
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "Simply, 15% creamier than regular ice cream = fattier = yummier!"
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "This is one of my all-time favorite Bourbon Street bars."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "The outside of the restaurant makes it look like your average low quality Chinese restaurant but don't be fooled!"
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "I'll stick to the many other great fish places on Clearwater Beach."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "I will have to say this thai pho isn't comparable to viet pho even though the taste was unique."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "I felt good that after interviewing many movers and find thus mover to the best."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "They made a punch drink that was more sugar than anyone should be consuming in a cup!"
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "Luckily Yelp helped me find Marchi which did not have the pushy salesman of the other places on Jeweler's Row (cough-Barsky-cough)."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "We had also never used the subway in Philly before (we live in the suburbs) - and found that it was nice, even clean, as subways go, more so than New York City's."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "We actually saw the people who ate next to us at the PBC tour afterwards, and I asked them how their meal was, and they said as bad as ours (they overheard us letting the server know)."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "I must admit Richard Gardner and Jose Carrasco did an exceptional job Jose made the whole process very easy and I don't have the greatest credit in the world."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "The desserts, the Panqueques (crepes with dulce de leche) and leche asada (similar to a creme brulee) are incredible!"
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "I was traveling with my mom who is a senior but has more energy than me."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "This might be one of the best dates I've been on."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "He was a very nice guy and I asked him if they had something similar to Guinness but not Guinness."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "The Cubs theme and Old Style beer definitely remind me of Chicago, and I love, love, love it!"
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "I guess the manager felt one $12 dish was more costly than losing 15+ customers."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "Usually, I cannot, in good conscience, give any chain restaurant more than one star but it is one chain that has everything:"
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "this was the worst massage of my life."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "I kind of second that motion - I guess I've always had good experiences at restaurants, and I guess I consider my self lucky because of that - but now I've experienced the bad and I'm thankful for my other good dining experiences."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "Impact! is like Goodwill, but without all of the unwearable junk to sift through."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "But, its easier than having to trek out of the city."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "Blind Onion is my family's favorite pizza so we frequently eat at this location."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "But I was charged $8.25, the same as if it contained alcohol."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "I could have installed a higher efficiency unit through a company other than Horizon, for the same price they quoted me on a mid level unit."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "I would venture to say that I have eaten brunch at damn near every place in or around no-libs... and this place has emerged as my favorite."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "Other than that I think the pizza is good, but definitely not my favorite."
+    },
+    {
+      "type": "FN",
+      "stratum": "other",
+      "sentence": "The drive is a bit longer, but it's well worth it to avoid the consistent bad service at the Hill Center location."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "Every time I've visited All Valley I've seen professional and courteous staff."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "If you like German beer, and all kinds of beer, you should come here."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "A small beach bar/restaurant, a place to go when you are not interested in going to any of the other (many) bars in the area that are crowded with young people and loud music - a place to talk with friends and enjoy decent food at fair prices."
+    },
+    {
+      "type": "FN",
+      "stratum": "other",
+      "sentence": "However, I don't think I would go back here for dinner - the food was good but nothing to write home about, and the prices were a bit high (though not out of the ordinary for Santa Barbara)."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "Linguini with mussels- my husband said it was the best he has ever had."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "The automatic 18% gratuity is much more generous than deserved."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "-good for large groups (bigger than 6)"
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "As a man of the sea, I came to Boise to visit a few clients and ended up staying longer than intended."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "Atmosphere young and up beat."
+    },
+    {
+      "type": "FN",
+      "stratum": "other",
+      "sentence": "There aren't that many good sushi joints in this town guy this place is fresh and reasonably priced."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "The Spanish Latte reminded me of a drink I had in San Diego a few months back - it's SO good."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "I broke my foot a few days ago and was looking into the best place to go in Tucson, I found DPMS and decided to try it out and I am so glad I did!"
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "Price is steep (I prefer ayce when it comes to hotpot)."
+    },
+    {
+      "type": "FP",
+      "stratum": "flagged",
+      "sentence": "Ask Karl for a $300 price reduction on a $9,000 job and his way is to throw tantrums, disrespect you to the other tradesmen, complain to others that he got \"beat down\", and include the \"beat down\" language in his invoice."
+    },
+    {
+      "type": "FN",
+      "stratum": "cue",
+      "sentence": "Best part, they actually cleaned up after themselves, which is more than I can say for many movers I've had before."
+    }
+  ]
+}

@@ -1,0 +1,1520 @@
+{
+  "fraction": 0.1,
+  "sample_seed": 42,
+  "seed": 42,
+  "excluded_tuning_rows": 50000,
+  "reviews_read": 50000,
+  "threshold": 2,
+  "population": {
+    "flagged": 9582,
+    "cue": 31724,
+    "other": 297498
+  },
+  "sampled": {
+    "flagged": 100,
+    "cue": 100,
+    "other": 100
+  },
+  "items": {
+    "1": {
+      "review_id": "kUs3m7MJ35MjeGb2SXMMPQ",
+      "business_id": "WhTRPUduXy3mRBYlmSmsKw",
+      "stratum": "flagged"
+    },
+    "2": {
+      "review_id": "Esn7c9ZaMTCAcVVO-pMegw",
+      "business_id": "grjFEAN9gXOKQFEta4yBJg",
+      "stratum": "cue"
+    },
+    "3": {
+      "review_id": "uRVAH2OlDFTVZF3KhLSzyA",
+      "business_id": "FcZxIZcFyJFDny8J83KzCw",
+      "stratum": "cue"
+    },
+    "4": {
+      "review_id": "u9oMFeev4JNXLmIFdPD3Rg",
+      "business_id": "qKg3Vu-be1PExiSOX6pTqg",
+      "stratum": "other"
+    },
+    "5": {
+      "review_id": "qkEdAnO1xNrznsABGvSMEA",
+      "business_id": "V8dZigOlI5fjpRxgOWwY3g",
+      "stratum": "other"
+    },
+    "6": {
+      "review_id": "DZxWUpSKOU2LP0ead3EdYw",
+      "business_id": "8DXIMrr2hJNUNnESAM4Fow",
+      "stratum": "flagged"
+    },
+    "7": {
+      "review_id": "qAIvlPo1uKgmN5mMxkwoWw",
+      "business_id": "mK4gpsdN7qqb2MMUYbQb7A",
+      "stratum": "cue"
+    },
+    "8": {
+      "review_id": "AJC62vEF6f8yuaiSEg1C2Q",
+      "business_id": "UehLaiHdYVieLJAu93CNZQ",
+      "stratum": "other"
+    },
+    "9": {
+      "review_id": "HtC4E5lIr0xbDiUDhR7KdA",
+      "business_id": "S6ACtNZ5wY0EjmK07iWUgg",
+      "stratum": "other"
+    },
+    "10": {
+      "review_id": "h3iosmWbYo9XwnvVaE9L3Q",
+      "business_id": "rTXNiH-RROF1OQHVIn5qJQ",
+      "stratum": "flagged"
+    },
+    "11": {
+      "review_id": "5zeFFw2o8EU2utEasPq6bQ",
+      "business_id": "GFbo0kqqDybKTPkRaJgGMQ",
+      "stratum": "other"
+    },
+    "12": {
+      "review_id": "Xb0pHkhPtgcnxS_qlGvQEA",
+      "business_id": "S2zWrE9tkV2nuMe-1U12uQ",
+      "stratum": "cue"
+    },
+    "13": {
+      "review_id": "iNHs_y9B7DoNR0QGGtJIwA",
+      "business_id": "UCMSWPqzXjd7QHq7v8PJjQ",
+      "stratum": "other"
+    },
+    "14": {
+      "review_id": "xz2wRTKDhSecdOPijweikw",
+      "business_id": "9QHxpGxshyJXh3JnE2VHIg",
+      "stratum": "cue"
+    },
+    "15": {
+      "review_id": "E8f4RetSz6tIYB01OVg6fw",
+      "business_id": "BjBDHqHhMXSxgyVipccznQ",
+      "stratum": "other"
+    },
+    "16": {
+      "review_id": "h3ERlerLlC0BgIjpRyXiPw",
+      "business_id": "f8ss-XDpkdwwbQf0-V6JCA",
+      "stratum": "other"
+    },
+    "17": {
+      "review_id": "TREb8dbRApor1gNX9G7rOQ",
+      "business_id": "g7yJzu-Uue85Up8J-52oJg",
+      "stratum": "other"
+    },
+    "18": {
+      "review_id": "HLKeMqFR441dVZOZlrV2Rg",
+      "business_id": "_msFUghqBbYNmO8grFJNAQ",
+      "stratum": "flagged"
+    },
+    "19": {
+      "review_id": "wwVx1cG4OzVJhTKt9E5s_Q",
+      "business_id": "cdZf-iYQRy5D18gTM95aew",
+      "stratum": "cue"
+    },
+    "20": {
+      "review_id": "Ag9Kw5Nr0zUn_jEzqUOwFw",
+      "business_id": "lsGZzXIJbjrWtcFGLAW5sw",
+      "stratum": "cue"
+    },
+    "21": {
+      "review_id": "Y4uNP5hgfqTwP2xn5nYZJw",
+      "business_id": "EI-x2auko13oNtjz0dbiXw",
+      "stratum": "flagged"
+    },
+    "22": {
+      "review_id": "sZgwAL5UOh1ha7Hlqk8LFQ",
+      "business_id": "rhlfk44YVcOLZ-T0Vbat4g",
+      "stratum": "other"
+    },
+    "23": {
+      "review_id": "NFUKX1DPMzEjTSvG3cuPOA",
+      "business_id": "ju3OnrqQ5mprsnTghq1uZw",
+      "stratum": "flagged"
+    },
+    "24": {
+      "review_id": "q2_vBNwPg3qU4AA68aYN-Q",
+      "business_id": "0dBIX6e31XhUSMqL7SoATg",
+      "stratum": "other"
+    },
+    "25": {
+      "review_id": "ID8m-otrIFDvH0zteqUwJQ",
+      "business_id": "VaO-VW3e1kARkU9bP1E7Fw",
+      "stratum": "flagged"
+    },
+    "26": {
+      "review_id": "CX6pGMg87mi50JT1aFE3rA",
+      "business_id": "hfbZ97Te3T4jeWN6GgsGrQ",
+      "stratum": "flagged"
+    },
+    "27": {
+      "review_id": "yoi1QCxTFSQy9FhGn1exCQ",
+      "business_id": "MFqcEIzw3MKgGtcOHwYwXQ",
+      "stratum": "cue"
+    },
+    "28": {
+      "review_id": "jtoA1H4aVtaEMMCTQ9EGMQ",
+      "business_id": "ytynqOUb3hjKeJfRj5Tshw",
+      "stratum": "other"
+    },
+    "29": {
+      "review_id": "-smukw-FDNA8Lbd_CU4Kmw",
+      "business_id": "JFteGsQlrJeJjur6cA1RhA",
+      "stratum": "cue"
+    },
+    "30": {
+      "review_id": "B0_9E3VLSx58NSzlzwrx1g",
+      "business_id": "TzkVUJab9Sh0CqDk2sCF-w",
+      "stratum": "cue"
+    },
+    "31": {
+      "review_id": "XuEaLKQPTDU7mPdgSgfvfA",
+      "business_id": "xUGOf4P0xiQSU_uy_qrclw",
+      "stratum": "cue"
+    },
+    "32": {
+      "review_id": "1kutqNsaSg5fMxHYVLsBmQ",
+      "business_id": "JHRlwxxKY0JJcU97rJ-Bug",
+      "stratum": "cue"
+    },
+    "33": {
+      "review_id": "qLLGWmhu1Kpmdf-5c3wA8Q",
+      "business_id": "KDzLMPTTLihnpcctZLmg0g",
+      "stratum": "other"
+    },
+    "34": {
+      "review_id": "N9ESgQXT879BfhfUcqiH5A",
+      "business_id": "tEYWcTF_m4NbiobZInQe7w",
+      "stratum": "cue"
+    },
+    "35": {
+      "review_id": "jkFC_b2kKxSwVApRx5Wang",
+      "business_id": "KdAWjL9MKjpJzEeI902qBA",
+      "stratum": "other"
+    },
+    "36": {
+      "review_id": "T8ubDWi2Zz-R7Nete06YsA",
+      "business_id": "4wq9bzoCe3Mh0cPbYH1eDg",
+      "stratum": "flagged"
+    },
+    "37": {
+      "review_id": "yvqFx6E45EHJDYTiogBR-A",
+      "business_id": "jEvoDXtF3xMJsiPPbqGSmw",
+      "stratum": "flagged"
+    },
+    "38": {
+      "review_id": "Zk1d4GPXwqMuuIT7FJOBaA",
+      "business_id": "VAGX-1xWsrajX_Hs8MUJiw",
+      "stratum": "flagged"
+    },
+    "39": {
+      "review_id": "FQnGbhfMPpJzY3PKQpGoFQ",
+      "business_id": "TUH-FGpkOKCOVGIzmtTtfg",
+      "stratum": "flagged"
+    },
+    "40": {
+      "review_id": "dgTgsHamlbmCNjS7QQww3Q",
+      "business_id": "BqE1rOqopf1IQeO1LI4kyQ",
+      "stratum": "flagged"
+    },
+    "41": {
+      "review_id": "g4NjfUUQmiQnbAQ6P1aW8A",
+      "business_id": "_PQzeo8P2sGczzFEifrK-Q",
+      "stratum": "flagged"
+    },
+    "42": {
+      "review_id": "2rxhgV0ygKd9m02UWvYLWw",
+      "business_id": "EDNdd3h8yNNk7nbjexXLug",
+      "stratum": "flagged"
+    },
+    "43": {
+      "review_id": "GqVVgfx3rMFTb0205nL30g",
+      "business_id": "Gku9f-9PKkYqLhPGgD1WGA",
+      "stratum": "cue"
+    },
+    "44": {
+      "review_id": "R4Eg-smt4mnVAlcVGeHxgw",
+      "business_id": "Hr16lbtrtvZhFr9vvkLW1g",
+      "stratum": "flagged"
+    },
+    "45": {
+      "review_id": "8HjHizAsrC5KDulKI2Mp8g",
+      "business_id": "XmSPtkPq9zNKSNcv_F7XYw",
+      "stratum": "cue"
+    },
+    "46": {
+      "review_id": "yTlmgXu2ejozINk1IuPNsA",
+      "business_id": "fPbegaLdUujQYw3ySX0O0g",
+      "stratum": "other"
+    },
+    "47": {
+      "review_id": "48J6q1bqPIf2lQL9Umtf6A",
+      "business_id": "RQAF6a0akMiot5lZZnMNNw",
+      "stratum": "flagged"
+    },
+    "48": {
+      "review_id": "YV987ipfxmE2384GI9wfYg",
+      "business_id": "sg3z6IuLkK0CfEwSGAlzYw",
+      "stratum": "flagged"
+    },
+    "49": {
+      "review_id": "CpdnRGNEibeeaDy3PX6lBQ",
+      "business_id": "u7cZUEGK6iJP2gvI22xY2A",
+      "stratum": "flagged"
+    },
+    "50": {
+      "review_id": "tRhSfdGXsUTol6UO-LCw1A",
+      "business_id": "HgPC5nqvPRMjC0UA3GFy4g",
+      "stratum": "cue"
+    },
+    "51": {
+      "review_id": "gIOVQZjxLonhBFLwp7Mv3w",
+      "business_id": "NYcXibc_RzSI7wgGbidi8w",
+      "stratum": "cue"
+    },
+    "52": {
+      "review_id": "D-ualMDAR7127JhEiVetTg",
+      "business_id": "X8hwEPRoRcLjbKVlVt1b1g",
+      "stratum": "other"
+    },
+    "53": {
+      "review_id": "2iCENP4VU52to6RarWZHqA",
+      "business_id": "-B6XL-ZWsVHlAQyYcd3eEg",
+      "stratum": "cue"
+    },
+    "54": {
+      "review_id": "qOSiSCQNy0C0RV0p4RcFEw",
+      "business_id": "LSUa7rauZg6UNErHfuBDKg",
+      "stratum": "flagged"
+    },
+    "55": {
+      "review_id": "wgF5YuDVqk3ltv_feObXTg",
+      "business_id": "bLC3frEZCtstsrfjmJMJiw",
+      "stratum": "flagged"
+    },
+    "56": {
+      "review_id": "GocYfCQ-NikB_1Xd2bXEQA",
+      "business_id": "ePRAae1MeWJlvDsGZK3DNw",
+      "stratum": "flagged"
+    },
+    "57": {
+      "review_id": "fpgRGZKfCpuB66tbeLfAVQ",
+      "business_id": "YUDcLokFMZOtyWAmVY3jwA",
+      "stratum": "other"
+    },
+    "58": {
+      "review_id": "n2k3ho0ReuNtChsWOsSfPw",
+      "business_id": "vMe0z4hCJpk-gUafgVZUFw",
+      "stratum": "other"
+    },
+    "59": {
+      "review_id": "hwn7TOICbBmwCcCprlkOAQ",
+      "business_id": "RnF36ZCuwHxpoFXf2aXX1g",
+      "stratum": "flagged"
+    },
+    "60": {
+      "review_id": "94rJZT8naQi3wQVgYAMrNg",
+      "business_id": "diovHdArxKlT5ZgkTfDkRQ",
+      "stratum": "cue"
+    },
+    "61": {
+      "review_id": "aQTbvE0U6ljEA06eP95u8w",
+      "business_id": "sway6xsRT_CUC6peK_Pyww",
+      "stratum": "flagged"
+    },
+    "62": {
+      "review_id": "7unWW75xcKJ5nBkBSJFcpA",
+      "business_id": "Ir8O3PNgtAgYPn1EwUB57Q",
+      "stratum": "other"
+    },
+    "63": {
+      "review_id": "oAp3q1iC0APgoGYr36iRBg",
+      "business_id": "r5Vl9gObXynGyk_AJtk8Nw",
+      "stratum": "cue"
+    },
+    "64": {
+      "review_id": "2ybAiYsMGK_G5gYdTVaqdg",
+      "business_id": "slzazSp3F_HhT-bTpw970g",
+      "stratum": "other"
+    },
+    "65": {
+      "review_id": "mBYYSfai_y8PZVsaKv9s2Q",
+      "business_id": "zJpBMqVuAzcBhHZSe0-18w",
+      "stratum": "flagged"
+    },
+    "66": {
+      "review_id": "vitnTtyBbDzekYIWBBUh_A",
+      "business_id": "_C7QiQQc47AOEv4PE3Kong",
+      "stratum": "cue"
+    },
+    "67": {
+      "review_id": "qKLT8984BxH5Vm0WoNRnjg",
+      "business_id": "W_M-QaSW2y2JfUDRfOZ4-Q",
+      "stratum": "flagged"
+    },
+    "68": {
+      "review_id": "2cEAKf5lOrnfwMaYYcnW0g",
+      "business_id": "roc-xyyzN5b_nImb0NdRLQ",
+      "stratum": "flagged"
+    },
+    "69": {
+      "review_id": "MNRDBYXjYVQjastR9fL2FQ",
+      "business_id": "a6kCB2Enbc3xuWnfHm2hGA",
+      "stratum": "flagged"
+    },
+    "70": {
+      "review_id": "Ancl0WkXHQZRDPt30GS8Rw",
+      "business_id": "jCn4Osn19PHj1oUEk5xjoQ",
+      "stratum": "cue"
+    },
+    "71": {
+      "review_id": "t4thx8RoqxWDV59cEBnJIA",
+      "business_id": "aKSrWtsJsz7XiZog1lepuQ",
+      "stratum": "flagged"
+    },
+    "72": {
+      "review_id": "ZwP28N21en2eFpIRttbydA",
+      "business_id": "9xPOQKtIDVaI_fN3ns35LA",
+      "stratum": "flagged"
+    },
+    "73": {
+      "review_id": "RRt3KTvese6lmysZBKn5kw",
+      "business_id": "zyU0TtQqoA-hn5IwAWpP3A",
+      "stratum": "cue"
+    },
+    "74": {
+      "review_id": "G46Ysz24GHi_kmCCpa0foA",
+      "business_id": "ncI768qIjMFnMwYMppB4tw",
+      "stratum": "other"
+    },
+    "75": {
+      "review_id": "hkpT9WGBnaqrjIYJ3ObiFA",
+      "business_id": "Fc6gtffEn70aY-5msZ4ZPA",
+      "stratum": "flagged"
+    },
+    "76": {
+      "review_id": "BNqwPTJfsd9OUDphM9fEwQ",
+      "business_id": "aMfVQdVbKJnZwdf-c1WNcQ",
+      "stratum": "other"
+    },
+    "77": {
+      "review_id": "5LRW7L_Smed3Kai6Z8gphA",
+      "business_id": "J17eQxAP2TwBmUPxd36VXA",
+      "stratum": "flagged"
+    },
+    "78": {
+      "review_id": "xf39A3Qth37x1nlkLBgXkQ",
+      "business_id": "9EoNx6yHsmiCe43XscJzDA",
+      "stratum": "cue"
+    },
+    "79": {
+      "review_id": "8JCbuKuuSyAbHeqnLg9Kvw",
+      "business_id": "FYmZzfCXghtqkKoeciWTbg",
+      "stratum": "other"
+    },
+    "80": {
+      "review_id": "qxubS6-QO6quQuOX43VYSA",
+      "business_id": "FY9T3yChZ9ZtnpTcQE2qIg",
+      "stratum": "cue"
+    },
+    "81": {
+      "review_id": "iER2gNLbw6ELQVEpn5Lo5A",
+      "business_id": "ompDR5sUDpoI6gnTldmneQ",
+      "stratum": "cue"
+    },
+    "82": {
+      "review_id": "oG4P0-BYPUBxtRGQWkdWjQ",
+      "business_id": "kS0P0as9gCFzlZ1_Y1YruQ",
+      "stratum": "cue"
+    },
+    "83": {
+      "review_id": "MfvsCbVlYbMsQdsgqPu-Pg",
+      "business_id": "yKAOohng_AJl22LgjBPl1g",
+      "stratum": "flagged"
+    },
+    "84": {
+      "review_id": "EWYtKQWf25KI1RwL_ak83w",
+      "business_id": "nQeu2F4xOiKoXIp-9engUw",
+      "stratum": "cue"
+    },
+    "85": {
+      "review_id": "uOcsYTdrNwEj2TGICz56gQ",
+      "business_id": "Yz4BD3vf8-d14j2T2FgYxA",
+      "stratum": "flagged"
+    },
+    "86": {
+      "review_id": "Ccwfk-rl-mtL5O23R0uO8A",
+      "business_id": "WCH833DCRcTuzU_J-5JRxA",
+      "stratum": "other"
+    },
+    "87": {
+      "review_id": "h9MmO7o2md53dtCpWf0qpA",
+      "business_id": "LM54ufrINJWoTN5imV8Etw",
+      "stratum": "flagged"
+    },
+    "88": {
+      "review_id": "3nU5LBhaJBfew9vPHmp-hg",
+      "business_id": "KAOkwAdXQ556P_p828BprQ",
+      "stratum": "flagged"
+    },
+    "89": {
+      "review_id": "hrB9upxePP0KofF-Zu0udQ",
+      "business_id": "rGauo-cmBKunJLm_GxeGFg",
+      "stratum": "cue"
+    },
+    "90": {
+      "review_id": "oqQpvm2wFx5mNPcWRXHEpw",
+      "business_id": "3_WGRjRrnZX2b4ZVpjmL6w",
+      "stratum": "flagged"
+    },
+    "91": {
+      "review_id": "qV5ABIhTKGzU59Qs4Y7GIQ",
+      "business_id": "9_m_iA3VAqGBJEW5XLc-5w",
+      "stratum": "cue"
+    },
+    "92": {
+      "review_id": "DrC8XkV0pxiGyfONOV1JQw",
+      "business_id": "geFqswYwGZ_XmuSJy3DEvw",
+      "stratum": "cue"
+    },
+    "93": {
+      "review_id": "Vs3fj5EOLMIRAq7rTJF6iw",
+      "business_id": "ncyt6jLL3iAICPRGFe7Ihw",
+      "stratum": "flagged"
+    },
+    "94": {
+      "review_id": "elFU0lNVR1HLWFyxMEMdlQ",
+      "business_id": "xUGOf4P0xiQSU_uy_qrclw",
+      "stratum": "other"
+    },
+    "95": {
+      "review_id": "-t9M9EawqCTiv3Fg3pIZ_g",
+      "business_id": "DucrEk1GbKkM18MlKVuSRw",
+      "stratum": "flagged"
+    },
+    "96": {
+      "review_id": "yDhKxXhSg8iJLypGWjTmzA",
+      "business_id": "NpBIOzibkzTHG56bLdeiAA",
+      "stratum": "flagged"
+    },
+    "97": {
+      "review_id": "FGExAoa1TBR7OeNsVbD7lg",
+      "business_id": "kbjbMffGvyjIdJivotkIiw",
+      "stratum": "cue"
+    },
+    "98": {
+      "review_id": "t2LrsPjy7xiKinBU8wIFXg",
+      "business_id": "u-w0dEUZAUF3JyGS_-KiTQ",
+      "stratum": "cue"
+    },
+    "99": {
+      "review_id": "tDDOyYTZ37p3ZphhNlAmdw",
+      "business_id": "2a3FOdTMLRV75361ANm4Dg",
+      "stratum": "cue"
+    },
+    "100": {
+      "review_id": "a8vGRa1Z6mgNjaQ74gLHrw",
+      "business_id": "6Ty-KKWq6hLZYW8DWEHYvg",
+      "stratum": "other"
+    },
+    "101": {
+      "review_id": "WOb-j-VpjBztomtSktKXFw",
+      "business_id": "uSbxFPsLjjX1QZJB95dQEA",
+      "stratum": "cue"
+    },
+    "102": {
+      "review_id": "8R0XY2MYFocvDcS_66rnjw",
+      "business_id": "-ATiAtTikuGuqvaW2O6tNA",
+      "stratum": "other"
+    },
+    "103": {
+      "review_id": "MELbDh-7-4n1YiyEmQIwsA",
+      "business_id": "N5tS8v0Yz4mmbFHMsxpr3g",
+      "stratum": "other"
+    },
+    "104": {
+      "review_id": "GnPLYtvQGKGEfaToSTAV9w",
+      "business_id": "Df60BZXw3Kj9Xt1UlAidqA",
+      "stratum": "flagged"
+    },
+    "105": {
+      "review_id": "eBizDR_2_zMOiyTDExo1tw",
+      "business_id": "4_VDvhKpKSsj7jZYdocZYA",
+      "stratum": "cue"
+    },
+    "106": {
+      "review_id": "RjhY5qKEnM0g1DGfLFcXfw",
+      "business_id": "OHIEmhBx2SezWLaHPUljdA",
+      "stratum": "other"
+    },
+    "107": {
+      "review_id": "D86Fimy7h8qhTK9enHfijw",
+      "business_id": "fxi3nBTi8apv82oiujljag",
+      "stratum": "other"
+    },
+    "108": {
+      "review_id": "kl6fSj9wJqi0l0COZxy34A",
+      "business_id": "nBDWXS5Kqf5VNxh8lZpb2A",
+      "stratum": "cue"
+    },
+    "109": {
+      "review_id": "FfeRnNhSKzcM2VFot6YWcQ",
+      "business_id": "ac1AeYqs8Z4_e2X5M3if2A",
+      "stratum": "flagged"
+    },
+    "110": {
+      "review_id": "xtBVhkLWDgL2EzyxiYVjhg",
+      "business_id": "coiorbCRjfNkj-0hZ2AXwA",
+      "stratum": "flagged"
+    },
+    "111": {
+      "review_id": "EI2rKTRD6k2h5aG3GRODGw",
+      "business_id": "tV764PZN2iq2PbirfnwWlQ",
+      "stratum": "cue"
+    },
+    "112": {
+      "review_id": "JHGLK1SwM81Zw52xd0RvvA",
+      "business_id": "m4xrhESFLaA7PiddXeg2aw",
+      "stratum": "other"
+    },
+    "113": {
+      "review_id": "6q99TsT52nJuNfLWYLFu1g",
+      "business_id": "JYTmhafg58Z4R8qZqnPXgg",
+      "stratum": "flagged"
+    },
+    "114": {
+      "review_id": "b2Ltu2H0jPRBCxk7oJi7Cg",
+      "business_id": "c2FJP_fPywkp6Gd1i4tWZQ",
+      "stratum": "cue"
+    },
+    "115": {
+      "review_id": "EgJKhunZX7CWhuh00aViOg",
+      "business_id": "r6osq1ta_YFXdmNb34lv8A",
+      "stratum": "cue"
+    },
+    "116": {
+      "review_id": "ckgk6IenOIWvR6q2J0nE9w",
+      "business_id": "JkBiCY04rSSAa7qrawqUsg",
+      "stratum": "other"
+    },
+    "117": {
+      "review_id": "AlwkNqEpRiP8ueTtbMiDCw",
+      "business_id": "K6hAv8V2cTuXQtU3VHAD6w",
+      "stratum": "cue"
+    },
+    "118": {
+      "review_id": "UQshjVZ6ltu8O4JU_DP64g",
+      "business_id": "JE7SWXVgY73azAd2I8Gq1A",
+      "stratum": "cue"
+    },
+    "119": {
+      "review_id": "oKoXHzi4VrhzghiKo1nQbA",
+      "business_id": "GjpMXrlTWpADpyUR1WByNA",
+      "stratum": "flagged"
+    },
+    "120": {
+      "review_id": "VFRoBc0VAIcfKad-GB2u6A",
+      "business_id": "UNJVuO31CU7JuZaydoaauA",
+      "stratum": "flagged"
+    },
+    "121": {
+      "review_id": "xWhi0W20166YNRWW8voeQQ",
+      "business_id": "8NSzJSdgt1IMkTdA2Cf65g",
+      "stratum": "cue"
+    },
+    "122": {
+      "review_id": "u6zL_GFnNId04y5wl0MkrQ",
+      "business_id": "rgDx2Yr3bUAzQ6srMiuPsQ",
+      "stratum": "flagged"
+    },
+    "123": {
+      "review_id": "UTRToR9IYOgsi6kJctYT5w",
+      "business_id": "krdFgf8qQTewyRfw0cGdAw",
+      "stratum": "cue"
+    },
+    "124": {
+      "review_id": "mVTJKc3SkdJQxf1VyWBltw",
+      "business_id": "e-4XTNeu31kowN1HRbJ_Gw",
+      "stratum": "other"
+    },
+    "125": {
+      "review_id": "zbcvUDwUK_O2iutF-7N_eA",
+      "business_id": "TMdphvu8Vmd2CaJXfiGzUQ",
+      "stratum": "flagged"
+    },
+    "126": {
+      "review_id": "KKGgf4JLQpZSUO0CRFd10w",
+      "business_id": "LZzDvgfpkd4nI3E4L9wF1w",
+      "stratum": "other"
+    },
+    "127": {
+      "review_id": "mTr0yYzarz9kJh7pT_9bCw",
+      "business_id": "Y7EalRsCafsApK5DcL_mTg",
+      "stratum": "cue"
+    },
+    "128": {
+      "review_id": "Bw0EUnWhPBGNkDytMYZOPA",
+      "business_id": "7BQObhEOYhw5HUcmpNlFoQ",
+      "stratum": "cue"
+    },
+    "129": {
+      "review_id": "ZSvx8G7mUrNMAl12rzy7Sw",
+      "business_id": "so1k2xikLyI5vEAvM9K-xg",
+      "stratum": "cue"
+    },
+    "130": {
+      "review_id": "7eqG3OmyttzH0kZRf5fabQ",
+      "business_id": "nU6LmqtSI08VMKIibEQRMA",
+      "stratum": "flagged"
+    },
+    "131": {
+      "review_id": "rWb-a992NaOXV8IX__p4uQ",
+      "business_id": "QgtYYJdJjSjfPJODkJNi7w",
+      "stratum": "cue"
+    },
+    "132": {
+      "review_id": "y7LtZxwZ31gw-M6tflep0w",
+      "business_id": "d4GRmLdkPIsJBeOYE7fuqA",
+      "stratum": "other"
+    },
+    "133": {
+      "review_id": "mHnYC8vU1CB7PTngIMGhjg",
+      "business_id": "1pZ-gkuPzYARrljU3YRt_A",
+      "stratum": "cue"
+    },
+    "134": {
+      "review_id": "FyZPYFGDRWix42_JDuuO1g",
+      "business_id": "lwcIJiRdoEyQppHm0jc0GQ",
+      "stratum": "cue"
+    },
+    "135": {
+      "review_id": "nEMw72vX8TXWcPANZHSHeA",
+      "business_id": "pHoqNvJtOkID2LHsCY4l1Q",
+      "stratum": "cue"
+    },
+    "136": {
+      "review_id": "s7FAkwWZom71Sh4JR4aynw",
+      "business_id": "YjQyrXNL5HcFMY6lEtk5ag",
+      "stratum": "flagged"
+    },
+    "137": {
+      "review_id": "7ZM68AWawl1vXE3A9yd3lw",
+      "business_id": "E5HJqAUxzRuBaZUy034M7g",
+      "stratum": "flagged"
+    },
+    "138": {
+      "review_id": "OdkxJDoZ3bFzUOXDODczlQ",
+      "business_id": "8jXmNMrGJ2acUG1R-D5e6w",
+      "stratum": "cue"
+    },
+    "139": {
+      "review_id": "yrpnFery0yeo0r9sQYOv5g",
+      "business_id": "spKCAxeKmx1oGlaBgjrbVg",
+      "stratum": "cue"
+    },
+    "140": {
+      "review_id": "I6tP_K7WUGA5eYApmhzAgQ",
+      "business_id": "g6rcVXjeLT6Y_kAFhbbJRg",
+      "stratum": "cue"
+    },
+    "141": {
+      "review_id": "MP_ks8ML9JdXmhNdPOeYxQ",
+      "business_id": "iLdVQodnexGgwcJYuW3mYw",
+      "stratum": "cue"
+    },
+    "142": {
+      "review_id": "zMPkKTMcCp8lBZiDT1cR5g",
+      "business_id": "Y_0k1Kor0yj6c85kpXnEgA",
+      "stratum": "other"
+    },
+    "143": {
+      "review_id": "75WEY2cJiiqxku6WWdgZjg",
+      "business_id": "L_zpJ5JWrOdT5aWhK6e90g",
+      "stratum": "flagged"
+    },
+    "144": {
+      "review_id": "OimvYUob9IYmeH9ivk-RuQ",
+      "business_id": "BVLGDMTcCU-9-Rwp3M4l6Q",
+      "stratum": "cue"
+    },
+    "145": {
+      "review_id": "jaAa3-3V_imoi85vBRov5Q",
+      "business_id": "7kHvPCBSmRgzDgjO9xXT1g",
+      "stratum": "cue"
+    },
+    "146": {
+      "review_id": "VlNBh1YuG1X5ySUTHRAA7g",
+      "business_id": "IORvbG2rAIVJ-1d148cCmg",
+      "stratum": "flagged"
+    },
+    "147": {
+      "review_id": "Kzxwsi1g4F6xBYvpuzzCCA",
+      "business_id": "eLomxx0tnJJhJ9wPcfUVvA",
+      "stratum": "flagged"
+    },
+    "148": {
+      "review_id": "kOWsEMwGlC080KUsP9gq2g",
+      "business_id": "OTQV6vvFKJyH9ZRo9IegRQ",
+      "stratum": "other"
+    },
+    "149": {
+      "review_id": "wgu-ak9ZKFTfyJDCXDfqBw",
+      "business_id": "kUSyhVKF8Pw2HYJGj-vyUQ",
+      "stratum": "cue"
+    },
+    "150": {
+      "review_id": "4OSAtwawMPBXuyhro3pEBQ",
+      "business_id": "-M7S_j79LiunqsLs1siEmQ",
+      "stratum": "cue"
+    },
+    "151": {
+      "review_id": "vZD744lfqOzPY6qf3SvZQw",
+      "business_id": "c9KXvNm7dvtnf10M9Vxfaw",
+      "stratum": "other"
+    },
+    "152": {
+      "review_id": "D-5IN5leu3pNZdVYDwYE3A",
+      "business_id": "VdNMMHEFPBx4qnAjAhiKjg",
+      "stratum": "other"
+    },
+    "153": {
+      "review_id": "6NJLqTqsSRZbhvB0oDaB3w",
+      "business_id": "dG-gZOWzn8iO1Rvv_fbXxA",
+      "stratum": "cue"
+    },
+    "154": {
+      "review_id": "yclk7HYOtQPVgE2lkgQbUw",
+      "business_id": "PnLPuCfVFYZPbapKSpzKZQ",
+      "stratum": "flagged"
+    },
+    "155": {
+      "review_id": "EBLsjxI3NCMbWi0Tw3e6VA",
+      "business_id": "QDbx8HGjNBgDOjDjJLPjIw",
+      "stratum": "other"
+    },
+    "156": {
+      "review_id": "jJjuM-1IvthtCzAAglmGxA",
+      "business_id": "EzjysPg2-lVX1E0ibStUXw",
+      "stratum": "other"
+    },
+    "157": {
+      "review_id": "fEuoHQ6lkTCm4VoZJuMiNQ",
+      "business_id": "ac1AeYqs8Z4_e2X5M3if2A",
+      "stratum": "other"
+    },
+    "158": {
+      "review_id": "Mkgakzi205mjn94NNcPY9A",
+      "business_id": "dybSe2rNDk1hNMpes9y7Rw",
+      "stratum": "cue"
+    },
+    "159": {
+      "review_id": "lTBIJmBIxaBzJ5x__x5yWw",
+      "business_id": "NqE7vN3VT_AphP0cIAatYA",
+      "stratum": "other"
+    },
+    "160": {
+      "review_id": "euSkSRk8FvtvgCe45ZtzKA",
+      "business_id": "OTNPMzKPb8LVQxX3fXJaqw",
+      "stratum": "cue"
+    },
+    "161": {
+      "review_id": "QBERXluR_cZdbnRYCvbALQ",
+      "business_id": "u2FUWB2xMipayzmNmJ2Mhg",
+      "stratum": "other"
+    },
+    "162": {
+      "review_id": "nyN9swlkkwMVS33uprY4ZQ",
+      "business_id": "Y_kXztsFC7l0mMQAYXNkNA",
+      "stratum": "other"
+    },
+    "163": {
+      "review_id": "I41jY4rO6-TwwM1jxVOffA",
+      "business_id": "VY1Gxa5ctQyYW6JElOOLJA",
+      "stratum": "cue"
+    },
+    "164": {
+      "review_id": "a4YvZlUJyFTECNyfGKc2hg",
+      "business_id": "_KKhBOzBKV4dcNmcXxJg0g",
+      "stratum": "other"
+    },
+    "165": {
+      "review_id": "eYFmOj0B_V2tSZqMFJ9Dtw",
+      "business_id": "S0YLj265lxDzbQgdjmy75Q",
+      "stratum": "other"
+    },
+    "166": {
+      "review_id": "GjixLsPXd_NubQsirBr-Dw",
+      "business_id": "_NsxUap80lyr77Js1cl2cw",
+      "stratum": "other"
+    },
+    "167": {
+      "review_id": "G2_MKV2VrwgAXAkeYMTw-g",
+      "business_id": "AzseSGgDC6bVtMPEYo1CNQ",
+      "stratum": "flagged"
+    },
+    "168": {
+      "review_id": "ZptFvHdbCVF3P3u1A7dsmg",
+      "business_id": "UcKbU6x4ucvNFslKBvXczQ",
+      "stratum": "flagged"
+    },
+    "169": {
+      "review_id": "iCsxY-cEeqecFDb5_Bk3Pw",
+      "business_id": "t0dyyicEe8ecrTHkhQIM-w",
+      "stratum": "cue"
+    },
+    "170": {
+      "review_id": "lfh40282CsCHWmu8UsHPvA",
+      "business_id": "6Pu5MKIWbn6FO-oebSSrYQ",
+      "stratum": "cue"
+    },
+    "171": {
+      "review_id": "VpZcT-3TLSSD4AYIRXMSzA",
+      "business_id": "CADaY34LnEGjpSpU7Lee8w",
+      "stratum": "other"
+    },
+    "172": {
+      "review_id": "6IiU945D_PDYMnsBbp0E-w",
+      "business_id": "Uekr58xgdLusfSRGiTk-PQ",
+      "stratum": "other"
+    },
+    "173": {
+      "review_id": "R-5Ol_Wo1DQjnoGPVkVUTQ",
+      "business_id": "fd4ovUATgDwRhLWaTJBmGg",
+      "stratum": "cue"
+    },
+    "174": {
+      "review_id": "-DZU3q9MrBrP2m-8ExI9dw",
+      "business_id": "OcxBHAYd2x8oI5IrieC9rQ",
+      "stratum": "flagged"
+    },
+    "175": {
+      "review_id": "7it8yjtueGM3SV5jex9RhQ",
+      "business_id": "zBzWWSk4sW0W1mhNjyzN1w",
+      "stratum": "other"
+    },
+    "176": {
+      "review_id": "8705z_wkKhVFK9NqfQwAHw",
+      "business_id": "FAvUlfYblxOf6FA4eO-qnA",
+      "stratum": "other"
+    },
+    "177": {
+      "review_id": "7B1R1SC2iopZfAprkBfRBw",
+      "business_id": "WY7Umhuv9jcQ6fOoOFa4lQ",
+      "stratum": "flagged"
+    },
+    "178": {
+      "review_id": "sKFB_g0YrcqY46TPGII6BA",
+      "business_id": "X_E7U2lVNEwbH_gpOBmAHQ",
+      "stratum": "other"
+    },
+    "179": {
+      "review_id": "HCLEvtZBH8Do0XrtwgxdwA",
+      "business_id": "Zc08oEA9FTk6KaDhtSlzkA",
+      "stratum": "flagged"
+    },
+    "180": {
+      "review_id": "j_5BXhI9YjyJUWKWbAe6rw",
+      "business_id": "3UHXD8T80OUFMCzLb3x-sQ",
+      "stratum": "cue"
+    },
+    "181": {
+      "review_id": "G09Ovf31MLin-YapuO3RjQ",
+      "business_id": "tTAb4vrTgcmm0eLC8qy3qw",
+      "stratum": "other"
+    },
+    "182": {
+      "review_id": "GyX4hMPNnK0Fi61FMtyGcA",
+      "business_id": "OKI3OqJ-dlQTAj25P-w3zQ",
+      "stratum": "cue"
+    },
+    "183": {
+      "review_id": "upv9x06fvBdeCi9nURuY0w",
+      "business_id": "nQNS9TxUm8ZD3jmRClcRWw",
+      "stratum": "cue"
+    },
+    "184": {
+      "review_id": "MqRU7fIal4zi_JGH_gmMvg",
+      "business_id": "KMOdAh08FHEfOJoY0d2QxQ",
+      "stratum": "other"
+    },
+    "185": {
+      "review_id": "oMixTqpzBKeARlbFgRZL4g",
+      "business_id": "i_sAh-ylmOwCQmqRmXox8g",
+      "stratum": "flagged"
+    },
+    "186": {
+      "review_id": "xoVlBbViKKNR-6djp_z7tw",
+      "business_id": "5Fm6khB-De-OdqATep9J9Q",
+      "stratum": "flagged"
+    },
+    "187": {
+      "review_id": "ci4ML0Aj_E1C0GiFznDcJg",
+      "business_id": "0rW8ANidJcVkJjsp6wMB_A",
+      "stratum": "cue"
+    },
+    "188": {
+      "review_id": "jUTRvGgJOXczJj0p_87_Iw",
+      "business_id": "GtSR96ff85xLxK0ogEtI5w",
+      "stratum": "flagged"
+    },
+    "189": {
+      "review_id": "QC5TmMsgxjk8KQChkG1nBA",
+      "business_id": "rL68WmPRYvmSjRaQUoKwkQ",
+      "stratum": "other"
+    },
+    "190": {
+      "review_id": "knV5NpJD0fDco3A5QAEH-Q",
+      "business_id": "Tf7Vf36M-k8ba3P1i3Ffpg",
+      "stratum": "cue"
+    },
+    "191": {
+      "review_id": "sZvVswhE8cQ5ABhKQtDrtw",
+      "business_id": "qsuoiCiQQWH46D4kWGB7Ag",
+      "stratum": "flagged"
+    },
+    "192": {
+      "review_id": "UEN3nkpFOcWoTyQtufB-AQ",
+      "business_id": "yhnh7vnHGaBKKFCn5FdL8w",
+      "stratum": "flagged"
+    },
+    "193": {
+      "review_id": "d--OzhID6dtGVVpeDeAecA",
+      "business_id": "YiSr-W5BBX6uXnhWPxk82Q",
+      "stratum": "flagged"
+    },
+    "194": {
+      "review_id": "e8I9bSAt-Nfds74g4j1qUw",
+      "business_id": "Gh7EXIq3mYIfGVa9vdqXVQ",
+      "stratum": "other"
+    },
+    "195": {
+      "review_id": "77IufVfFRI6583SHyVBpcw",
+      "business_id": "6PVqGaFOEibpO4DMXD5Tqw",
+      "stratum": "cue"
+    },
+    "196": {
+      "review_id": "6pA0na3hnipyRS82U0tLmA",
+      "business_id": "IUlEP7PL033CSXhz0BKtXQ",
+      "stratum": "flagged"
+    },
+    "197": {
+      "review_id": "GBOnkdzyEKd_v-iauwB-6w",
+      "business_id": "uZYBF0YTU_iKq4_L_PDtMQ",
+      "stratum": "other"
+    },
+    "198": {
+      "review_id": "eHwXH98Vdzk3nvJYuhnXaA",
+      "business_id": "IkY2ticzHEn4QFn8hQLSWg",
+      "stratum": "cue"
+    },
+    "199": {
+      "review_id": "T6q4ora2noSUqdYqPh5IRg",
+      "business_id": "_KlEMZvay1c9xYctKFtN-w",
+      "stratum": "flagged"
+    },
+    "200": {
+      "review_id": "k7gVQ9rDJt1WfaCkNd3l-A",
+      "business_id": "zgfKSWwxcBgBir_mlq0CIg",
+      "stratum": "cue"
+    },
+    "201": {
+      "review_id": "Jbl7VtX7ysNfw1Z3-ATBGA",
+      "business_id": "tTzXJ9oXZCCL3Wip6dEoTQ",
+      "stratum": "other"
+    },
+    "202": {
+      "review_id": "ACApyuomlJDOAROgGj-ipQ",
+      "business_id": "DAbpxhhHOxInDNLdvWrTTQ",
+      "stratum": "cue"
+    },
+    "203": {
+      "review_id": "GZLEU81Fz66tiBlY10RWgw",
+      "business_id": "uRH_e7yi35_Dlj3gfsJppg",
+      "stratum": "other"
+    },
+    "204": {
+      "review_id": "R3ybLSQXVkbS4YfzWi8t6w",
+      "business_id": "lnjYuK2sAg8qxTvvlnhNFg",
+      "stratum": "flagged"
+    },
+    "205": {
+      "review_id": "bTHv7ZthSJzR7j6-ub7iaQ",
+      "business_id": "_8MkUoObdLpakXbCobbKxA",
+      "stratum": "other"
+    },
+    "206": {
+      "review_id": "lP5bs5eEKG2wqWUVIWubBw",
+      "business_id": "DKtAKuOjI6vUAHhW4NR5UA",
+      "stratum": "flagged"
+    },
+    "207": {
+      "review_id": "6B6Ks_A1X7XnZ0Od969tTQ",
+      "business_id": "1MdSDNxlCzKmYMMHSccVrQ",
+      "stratum": "cue"
+    },
+    "208": {
+      "review_id": "fiky0Gqe8rbmTYyHByhNxA",
+      "business_id": "UgE83rn1dh0q1GSBNmXmmg",
+      "stratum": "cue"
+    },
+    "209": {
+      "review_id": "JfWAg6MaVq3u4mZ8JtsZRg",
+      "business_id": "9zlIJ7Q5W4AENjpGgaNSsQ",
+      "stratum": "other"
+    },
+    "210": {
+      "review_id": "MIqWPmWMX7rgjl1o6lnbPw",
+      "business_id": "3WU1ZobAqXQ07xYoKE2Vyg",
+      "stratum": "flagged"
+    },
+    "211": {
+      "review_id": "QdSojiqCSvwX2x2DtR5hJA",
+      "business_id": "wuH4TPUo8oJo4E59xZKsNg",
+      "stratum": "flagged"
+    },
+    "212": {
+      "review_id": "boUD_JfaczRa6I56tGXbVQ",
+      "business_id": "fkJibUnAbV0aZWUnFxc8qg",
+      "stratum": "other"
+    },
+    "213": {
+      "review_id": "TdIfcaZBGNqR5-EN2hd13g",
+      "business_id": "8LonS_bxNmCDk3FWiG9lzA",
+      "stratum": "cue"
+    },
+    "214": {
+      "review_id": "gbIpmuFwrLT1YHHuvgiyVw",
+      "business_id": "16zHT7zp6K9IEQZ1oW6xXg",
+      "stratum": "other"
+    },
+    "215": {
+      "review_id": "qEcvfolUPt-m40e_OYHoBw",
+      "business_id": "NB5XTBuLVCn7c9Lu5SUqKg",
+      "stratum": "other"
+    },
+    "216": {
+      "review_id": "xXCvi2fBko07GKrziwgY1A",
+      "business_id": "ZhIpinbCrf0BQKyuHaWGhw",
+      "stratum": "other"
+    },
+    "217": {
+      "review_id": "Vx-HEpbVfGdotxGFru6ynQ",
+      "business_id": "uaphuuG9cT69mgOrH7xvww",
+      "stratum": "cue"
+    },
+    "218": {
+      "review_id": "Relv-790Q30CY3RAbTfQQQ",
+      "business_id": "DVBJRvnCpkqaYl6nHroaMg",
+      "stratum": "other"
+    },
+    "219": {
+      "review_id": "cZ9bIiZKZ6Y2l8b1hFpQZA",
+      "business_id": "qhT8y5e9vrHm3LHMtAuwTA",
+      "stratum": "flagged"
+    },
+    "220": {
+      "review_id": "sfW7VqMudsu6TR0d5_j5NA",
+      "business_id": "lmGibbdxH2Bf9dBJf1CTGQ",
+      "stratum": "other"
+    },
+    "221": {
+      "review_id": "Kf7fNBUGibi9pYlMZON2-w",
+      "business_id": "D73evJ9PZKxO3E5TaThe3w",
+      "stratum": "other"
+    },
+    "222": {
+      "review_id": "lJ3SllwF6EAuBlBtYtCdjw",
+      "business_id": "oYzq49fG7jokPLQ38bFMOw",
+      "stratum": "other"
+    },
+    "223": {
+      "review_id": "YinnsMUhxZBjSabfMFWEtg",
+      "business_id": "_bqwjNXAW_Li6c8suIwdBg",
+      "stratum": "cue"
+    },
+    "224": {
+      "review_id": "_JVaUprb3l5Yyn1ObXIONg",
+      "business_id": "i1UAowqVH1cCkXudBRDwdA",
+      "stratum": "flagged"
+    },
+    "225": {
+      "review_id": "i_mvZvjJUSyd3LnmglToSQ",
+      "business_id": "bc3K8KvLkLNu_XU3RkeeeA",
+      "stratum": "other"
+    },
+    "226": {
+      "review_id": "o_t1z8OeUjI2N_Gpo_dMsw",
+      "business_id": "-p1n0tJURpNW5vwM0dGBcw",
+      "stratum": "flagged"
+    },
+    "227": {
+      "review_id": "_kbj0reVIrkL9qSlewMW_g",
+      "business_id": "qynne35dp40BzXb5hroudA",
+      "stratum": "flagged"
+    },
+    "228": {
+      "review_id": "6XvIb2qfa57ie-KRM09paQ",
+      "business_id": "PlaECqs3oPBRo47p85zkzw",
+      "stratum": "other"
+    },
+    "229": {
+      "review_id": "x3_fhAynKWUKjK_eWnyyUg",
+      "business_id": "31ADZa_GlIyAvvHTDrtdnw",
+      "stratum": "cue"
+    },
+    "230": {
+      "review_id": "a0mXQHDCX_ds535MEUS0vQ",
+      "business_id": "KK_vqJYW1Z-Ey6og_IKmHg",
+      "stratum": "other"
+    },
+    "231": {
+      "review_id": "UHMQ135AKG78mPdVjC67CA",
+      "business_id": "MU2e9Xao333ssSJ2JdHnMw",
+      "stratum": "cue"
+    },
+    "232": {
+      "review_id": "ixB1LX2nbk9z7L5ZVU5zqw",
+      "business_id": "IL5_7FsK4XVGMRzLotWcJg",
+      "stratum": "flagged"
+    },
+    "233": {
+      "review_id": "Yxd8C98GEcNQHIKewOKeyA",
+      "business_id": "_zQEnrUU33EfakQJnAkbFA",
+      "stratum": "flagged"
+    },
+    "234": {
+      "review_id": "39c-W53Sx3YARcVAZnBqLg",
+      "business_id": "KO7zaWqCLqjhDP-bxPfyDw",
+      "stratum": "other"
+    },
+    "235": {
+      "review_id": "dUWgntClfSBZnnJpbLCjDg",
+      "business_id": "GnreeOhXel3oC5vQnkk8ig",
+      "stratum": "cue"
+    },
+    "236": {
+      "review_id": "FuYum5jSb81rfFKBkZwQvw",
+      "business_id": "dybSe2rNDk1hNMpes9y7Rw",
+      "stratum": "other"
+    },
+    "237": {
+      "review_id": "upzozGAlucyFM_U9UPF4KQ",
+      "business_id": "PG-BzBgptqM4TixG_Nu4yQ",
+      "stratum": "other"
+    },
+    "238": {
+      "review_id": "M4-EVdqiBEBjUIxF-r6OHQ",
+      "business_id": "PP3BBaVxZLcJU54uP_wL6Q",
+      "stratum": "flagged"
+    },
+    "239": {
+      "review_id": "zO93vjLlnbKIVnWzCZBrSQ",
+      "business_id": "fYUeuKAPBFvQ3YyyZHrj8g",
+      "stratum": "other"
+    },
+    "240": {
+      "review_id": "5p-Tb0hww_b56lB31fPj-A",
+      "business_id": "JrG4NINLspXPNhSXg7Q07Q",
+      "stratum": "cue"
+    },
+    "241": {
+      "review_id": "w28-PjSTFxXrHzIPlumwIw",
+      "business_id": "Ee0DwQtmCxhcwSFvX1Gl6g",
+      "stratum": "other"
+    },
+    "242": {
+      "review_id": "-M_c1rQydaG4ncJZFdQAbw",
+      "business_id": "iObrU6cim0l3exsPzaIYvg",
+      "stratum": "flagged"
+    },
+    "243": {
+      "review_id": "4ri2KK3ijiKSTnOIN7gReQ",
+      "business_id": "r2kBBQVjjUA7eua394BK3w",
+      "stratum": "other"
+    },
+    "244": {
+      "review_id": "MNRDBYXjYVQjastR9fL2FQ",
+      "business_id": "a6kCB2Enbc3xuWnfHm2hGA",
+      "stratum": "other"
+    },
+    "245": {
+      "review_id": "p2BLk6NfMhkv_1TeSiTqSg",
+      "business_id": "BErYojCJSO959vzaz9JclQ",
+      "stratum": "flagged"
+    },
+    "246": {
+      "review_id": "8iYMU33yP8b2n6Db27TNkw",
+      "business_id": "r2Q0R0o2ozazmsZb6EiFfg",
+      "stratum": "other"
+    },
+    "247": {
+      "review_id": "X1VfUKfC6L4L08SnEk6-KA",
+      "business_id": "DhBe7gF3li2eCYRjwi2_Hw",
+      "stratum": "other"
+    },
+    "248": {
+      "review_id": "cWWE-Xh1KD6y8RPHea-72Q",
+      "business_id": "WSi08gApEgsS62TIE78J_g",
+      "stratum": "cue"
+    },
+    "249": {
+      "review_id": "ml8K7RoMLXrcpOjr1Kp0Jw",
+      "business_id": "v5kwdvmg-J8g-ll0nkc3Sw",
+      "stratum": "cue"
+    },
+    "250": {
+      "review_id": "B4hIF1UNm7U4wtqB3tThaA",
+      "business_id": "5wlbureqTc6gsaB_y-OkOA",
+      "stratum": "cue"
+    },
+    "251": {
+      "review_id": "cbzaEdzld8KNiI1Si1650Q",
+      "business_id": "wYWEF_ZQNWd4oqJM3fs1jg",
+      "stratum": "flagged"
+    },
+    "252": {
+      "review_id": "uY7CisYLxueXz7CIlgxP6w",
+      "business_id": "y-rH2XmQD7PjlBjgbNnLEg",
+      "stratum": "other"
+    },
+    "253": {
+      "review_id": "xMpiB7fI9y2GuZxk-L70kQ",
+      "business_id": "tVDGkK9AVU0ad-24Phrahg",
+      "stratum": "cue"
+    },
+    "254": {
+      "review_id": "3DPM859De3J6eG8Hrg6p3w",
+      "business_id": "Cu-UEi18cdlereln29rdww",
+      "stratum": "flagged"
+    },
+    "255": {
+      "review_id": "TAbyiNK6cPAyvofReDbJmg",
+      "business_id": "i2WiqWwv3H9DZJ8uaqwPDA",
+      "stratum": "cue"
+    },
+    "256": {
+      "review_id": "-iUxzEIcQkKyaCU-Zj01YQ",
+      "business_id": "49Gyz-LD9MxTh1yzbYiOhw",
+      "stratum": "flagged"
+    },
+    "257": {
+      "review_id": "smThUfihRQu7dpRrKToNwQ",
+      "business_id": "il7OHZhFGo8k4U80QYdeyQ",
+      "stratum": "cue"
+    },
+    "258": {
+      "review_id": "nfTJjmluf16UpxD9lPziEw",
+      "business_id": "JwWM19w-kSc4Tx4a46sNHw",
+      "stratum": "flagged"
+    },
+    "259": {
+      "review_id": "bmvSo-f8QbsrGbu8MltIlw",
+      "business_id": "_gVyuTRb_6HM-SNtqbpevQ",
+      "stratum": "other"
+    },
+    "260": {
+      "review_id": "Cfemz6dllFnkvAtDIcuZ5Q",
+      "business_id": "aKFMh6E92Z5l_X2TIogjtg",
+      "stratum": "other"
+    },
+    "261": {
+      "review_id": "0jhNy1nXGe7PQuseJLsBgg",
+      "business_id": "aAPiZY_6_xb2qSMs0ABBpg",
+      "stratum": "other"
+    },
+    "262": {
+      "review_id": "5d1ICcGbbsG0TmgE5BRiZA",
+      "business_id": "1Vi_y09FXL9ayFkFnqVYBw",
+      "stratum": "cue"
+    },
+    "263": {
+      "review_id": "i4N_QGTaTkcBe4rSObIGXw",
+      "business_id": "_8dFWEVSVxU6nIW3yM0xRA",
+      "stratum": "other"
+    },
+    "264": {
+      "review_id": "nIxA7VOCZAji7WvDuPlBeA",
+      "business_id": "GKBN0jG6f9XhvWmAEOgYPw",
+      "stratum": "flagged"
+    },
+    "265": {
+      "review_id": "uPUHb4xxwJ1S6iKDIaWXJA",
+      "business_id": "0RxW0oN1s4zgNh6uiWVPZQ",
+      "stratum": "other"
+    },
+    "266": {
+      "review_id": "V5odqm-enLZpIzlWRhVFhg",
+      "business_id": "aZF7h8tFBnRCJc1f6gUm9w",
+      "stratum": "flagged"
+    },
+    "267": {
+      "review_id": "CYguytKWCqh8dMUGZygccg",
+      "business_id": "SNQ8sn7R9_e92GWKMCNSgg",
+      "stratum": "cue"
+    },
+    "268": {
+      "review_id": "wGS_ltPeZEiLzix2gbJaCw",
+      "business_id": "rMfI2VVaZoDgF-GYdvOw8A",
+      "stratum": "flagged"
+    },
+    "269": {
+      "review_id": "QTl08RgOfGaW8k98mvXR-w",
+      "business_id": "BWITd9JUXP3gSi1z3Y-z8g",
+      "stratum": "other"
+    },
+    "270": {
+      "review_id": "zpa_Ew9kyE8Tj_z0M8xLfw",
+      "business_id": "ve0dqW6L0FOVVOlhop-p1g",
+      "stratum": "flagged"
+    },
+    "271": {
+      "review_id": "yOMhhuIDwrtbZkFbP_PvOA",
+      "business_id": "1onJyt5MQBGHvQmSlAZqHQ",
+      "stratum": "flagged"
+    },
+    "272": {
+      "review_id": "QEJ_GvOFEUNErMU4T_wx9w",
+      "business_id": "ezs_lFehB5fOVDgdUOl6Dw",
+      "stratum": "flagged"
+    },
+    "273": {
+      "review_id": "rcZ1QTFRFNAgxBE1bz4loQ",
+      "business_id": "-mDAFyX5kZHXhxjELeMhiQ",
+      "stratum": "flagged"
+    },
+    "274": {
+      "review_id": "_0DLYvzaMzHlGkWfHxTqSA",
+      "business_id": "adcvEfvZmtDTCaQpEHLg3A",
+      "stratum": "other"
+    },
+    "275": {
+      "review_id": "QlTxJp_bfJ2yr8WDXqF1qw",
+      "business_id": "wK2G-v74dCEzmGEUtKgOKQ",
+      "stratum": "flagged"
+    },
+    "276": {
+      "review_id": "VxAsibCPNJ4KTxnEW0cdwA",
+      "business_id": "iksVwRfpWymIUUFqw0tXpw",
+      "stratum": "flagged"
+    },
+    "277": {
+      "review_id": "cC6pK4xhkZffd_yDwmDziA",
+      "business_id": "oMTXtSJzEiHudUY3T68sPg",
+      "stratum": "cue"
+    },
+    "278": {
+      "review_id": "XzfuJVuy7G4SWVhngWLShw",
+      "business_id": "7Gz7MYnMuf5P_UFsYxmsmg",
+      "stratum": "flagged"
+    },
+    "279": {
+      "review_id": "ytTeZbDRqpl-OwnSxaiYvA",
+      "business_id": "6HTGlttrzCMsuGBHO1ZGiw",
+      "stratum": "other"
+    },
+    "280": {
+      "review_id": "EjCaI2BG1OE3cvN-bA-GDw",
+      "business_id": "x063XOQJCfTsKvS7iPLSsQ",
+      "stratum": "other"
+    },
+    "281": {
+      "review_id": "8KB5HxXrbPGr2GhCKtUX1g",
+      "business_id": "ldr7iDtxFXX-q7tJuXqlGQ",
+      "stratum": "other"
+    },
+    "282": {
+      "review_id": "GIkm0Ujcs9QeJh5VBnc2oA",
+      "business_id": "3WC9HidyqFisiDxP1dcFCA",
+      "stratum": "cue"
+    },
+    "283": {
+      "review_id": "p2K-m_jUExzu2u7PdbgHzg",
+      "business_id": "ZDDliJv8PyO4Ic3qZYOeTw",
+      "stratum": "other"
+    },
+    "284": {
+      "review_id": "zqcBGhf8ROOJZuzEZxc4LQ",
+      "business_id": "WZEMW9nyGpeGI2k4SekDQw",
+      "stratum": "flagged"
+    },
+    "285": {
+      "review_id": "xH3na4SRWySpuUsndKa0NA",
+      "business_id": "YSRM9nWQn40eg49tSiI-_Q",
+      "stratum": "cue"
+    },
+    "286": {
+      "review_id": "QSAQtCU-ssjvZuZjk3xctA",
+      "business_id": "MfkMUNwur9huBERrx0k5lg",
+      "stratum": "cue"
+    },
+    "287": {
+      "review_id": "1bhDcdVXJOVLG7K1mjMLMw",
+      "business_id": "Xba6iGYcME5JC-AIkAMKLw",
+      "stratum": "cue"
+    },
+    "288": {
+      "review_id": "whV7JIVw4Y6o_nURx1pBzw",
+      "business_id": "9OCsSHr6OCSyR91BFIbszQ",
+      "stratum": "other"
+    },
+    "289": {
+      "review_id": "F9jyDn-_EhRidqSAgmZyaQ",
+      "business_id": "7p56URlyNtQhhkr83RtN4Q",
+      "stratum": "flagged"
+    },
+    "290": {
+      "review_id": "zPZsUvWNE82atljDGSr0tA",
+      "business_id": "1KLmUmiguE0qiIfqhwm8Xw",
+      "stratum": "other"
+    },
+    "291": {
+      "review_id": "Qmkq0G6POkwMXvSwCKBzgw",
+      "business_id": "3CdKup6WUOQI3LmOH7PhdA",
+      "stratum": "flagged"
+    },
+    "292": {
+      "review_id": "fiky0Gqe8rbmTYyHByhNxA",
+      "business_id": "UgE83rn1dh0q1GSBNmXmmg",
+      "stratum": "cue"
+    },
+    "293": {
+      "review_id": "LYQw2OaTHPhHlx9Seff3nA",
+      "business_id": "uz5iexrLN3LjGQGcKMSTuw",
+      "stratum": "cue"
+    },
+    "294": {
+      "review_id": "vBkZhZ5lPnnPt6MWr4f7Kg",
+      "business_id": "ezNrH18XtojryQvdf6_H9Q",
+      "stratum": "other"
+    },
+    "295": {
+      "review_id": "T4vAxLEr6z-_PmzlI7gGrQ",
+      "business_id": "oM-HxIaYiUKRCGF2iHraqA",
+      "stratum": "flagged"
+    },
+    "296": {
+      "review_id": "4Qo3TMpTRQ63U9RVMsbhjQ",
+      "business_id": "rSYyGcZZziJLsqKl5hMcDw",
+      "stratum": "other"
+    },
+    "297": {
+      "review_id": "57HAtkK6WgWonXGaPwpjTQ",
+      "business_id": "NsyU7HYnx6U6m2OygjiYyg",
+      "stratum": "other"
+    },
+    "298": {
+      "review_id": "O2gS4S4rEWh8KwTPYWcxug",
+      "business_id": "Fs4T7lKpXVtD5Pz7jWSJeg",
+      "stratum": "other"
+    },
+    "299": {
+      "review_id": "4p_aW1WXNKr2kbsQfteKDg",
+      "business_id": "ohhlDePMQN0_fxok5mtVrQ",
+      "stratum": "flagged"
+    },
+    "300": {
+      "review_id": "omaemOZ3SJY08fetTqIDxA",
+      "business_id": "whiNQ0Z2AUkyBKucejQNTA",
+      "stratum": "cue"
+    }
+  }
+}
