@@ -229,9 +229,14 @@ def write_summary(df, yearly, seasonal, stars, mismatch, tests) -> None:
     lines = [f"Task 3.4.1 - Lexicon-based sentiment (VADER, shared "
              f"{DEFAULT_FRACTION:.0%} sample, seed {SAMPLE_SEED})", ""]
 
-    lines.append("Reviews per sector (years with enough reviews only):")
+    lines.append(f"Reviews per sector (full sample, before the {MIN_N}-review threshold):")
     for s in SECTOR_ORDER:
         lines.append(f"  {s}: {int((df.Sector == s).sum())}")
+    lines.append(f"  Total: {len(df)}")
+    lines.append(f"  (Yearly/seasonal groups with fewer than {MIN_N} reviews are "
+                 "excluded from the trend statistics below.)")
+    lines.append("  (Seasons assume the northern hemisphere: Dec-Feb winter, "
+                 "Mar-May spring, Jun-Aug summer, Sep-Nov autumn.)")
 
     lines += ["", f"Yearly trend (years with >={MIN_N} reviews):"]
     for s in SECTOR_ORDER:
