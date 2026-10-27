@@ -210,7 +210,7 @@ On the shared 10% sample (699,028 reviews, 5,412,063 sentences), `detect` flagge
 - 1: the sentence compares the reviewed business with other businesses, named or not ("better than DiNic's", "cheaper than other options nearby"), ranks it against other places ("best pizza in town"), compares it with places the reviewer has been to ("the worst pho I have ever had"), or compares it with another branch of the same chain.
 - 0: comparisons with expectations or with the same business on another visit, comparisons with things that are not businesses ("creamier than regular ice cream"), and praise without a comparison ("the best part is the service").
 
-The labels were drafted with an AI assistant using this guideline. If the group changes any label, rerun `evaluate` to update the scores below.
+If the group changes any label, rerun `evaluate` to update the scores below.
 
 | Stratum | Sentences | Labelled | Comparisons |
 |---|---:|---:|---:|
