@@ -170,3 +170,33 @@ python -m tasks.task_3_4_1
 This task uses VADER to score raw review text. It analyses Fast Food, Italian, and Ice Cream & Frozen Yogurt reviews. Businesses listed in more than one of these sectors are excluded.
 
 The script saves yearly and seasonal sentiment trends, checks of star ratings and review length, example failure cases, and `summary.txt` under `outputs/task_3_4_1/`. The VADER score cache is local and should not be uploaded.
+
+### Task 3.5: Comparison Sentence Detection
+
+Run from the project root:
+
+```bash
+python -m tasks.task_3_5 detect
+python -m tasks.task_3_5 text "Way cheaper than the Starbucks next door."
+```
+
+This task finds sentences in which a reviewer compares the reviewed business with other businesses, for example "Better than Olive Garden" or "Unlike other sushi places, ...". It splits each review into sentences and scores each sentence with hand-written rules: explicit comparison phrases, "<comparative> than", scoped superlatives such as "best in town", and names of other businesses found in the business cache. A sentence with a score of 2 or more counts as a comparison. Comparisons with the reviewer's expectations ("better than I expected") or with the same business at another time ("better than last time") are not counted. For each comparison, the rules also say whether the reviewed business comes out better, worse, or similar.
+
+`detect` reads the shared Arrow cache and runs on the same reproducible 10% review sample as tasks 3.2.2, 3.3.1, and 3.4.1 (`sample_rows`, seed 42), using 8 worker processes (`--workers`). It saves every detected sentence with its evidence to `comparisons.jsonl` and the statistics to `summary.json` under `outputs/task_3_5/`. `text` classifies sentences typed on the command line and prints the evidence; add `--business` to also recognise competitor names.
+
+#### Evaluation
+
+```bash
+python -m tasks.task_3_5 sample
+python -m tasks.task_3_5 evaluate
+```
+
+Comparison sentences are rare, so a plain random sample of a few hundred sentences would contain only a handful of positives and give an unreliable recall. `sample` therefore draws a stratified sample:
+
+- It skips review rows 0 to 49,999, which were used to tune the rules, so the labelled set is separate from the tuning examples.
+- From the rest of the shared 10% sample, it reads 50,000 random reviews (seed 42) and classifies every sentence of 5 to 60 words.
+- It keeps 100 random sentences from each of three strata: sentences the detector flags, unflagged sentences that contain a comparison-like word such as "than", "other" or "best" (where missed comparisons are most likely), and all other sentences.
+
+The 300 sentences are shuffled into `to_label.tsv` without their stratum, so labellers cannot tell which sentences the detector flagged. Group members fill the `label` column with 1 (the sentence compares the business with another business) or 0. `sample_key.json` records the stratum of each sentence and the size of each stratum. `sample` will not overwrite a `to_label.tsv` that already exists.
+
+`evaluate` compares the labels with the detector's predictions. It reports precision, recall, and F1 on the labelled sentences themselves, and estimates for all sentences in which each stratum is weighted by its size. The weighted estimates have 95% bootstrap confidence intervals and are the figures to report. Results and the list of errors are saved to `outputs/task_3_5/evaluation.json`.

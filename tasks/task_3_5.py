@@ -16,7 +16,7 @@ METHOD  (rule-based NLP, standard library only, no deep learning)
          - comparative construction      ("cheaper than", "more expensive than")     -> +2
          - scoped superlatives           ("best in town", "best I've ever had")      -> +2
          - weaker superlative cues       ("hands down", "one of the best")          -> +1 each (max +2)
-         - mention of ANOTHER business   (name found in business.json)              -> +1
+         - mention of ANOTHER business   (name found in the business cache)         -> +1
     3. If total score >= threshold (default 2) the sentence is a "comparison".
     4. Infer the direction (better / worse / similar) from polarity words.
 
@@ -24,30 +24,44 @@ METHOD  (rule-based NLP, standard library only, no deep learning)
     the same business at another time ("same as always", "better than last time")
     are NOT counted: only comparisons with OTHER businesses are.
 
+DATA
+    Reviews and businesses are read from the shared Arrow cache (utils.load_cache),
+    and 'detect' uses the same reproducible 10% review sample as tasks 3.2.2, 3.3.1
+    and 3.4.1 (tasks.task_3_3_1.sample_rows, seed 42).
+
+    The rules were tuned on the first 50,000 reviews of the dataset (rows 0-49,999,
+    the old '--limit 50000' default).  'sample' never draws from those rows, so the
+    hand-labelled evaluation set is kept separate from the tuning examples.
+
 SUB-COMMANDS
     text      classify sentences typed on the command line
-    detect    run over review.json (+ business.json), write results and a summary
-    sample    draw random REAL sentences from review.json for hand-labelling
+    detect    run over the shared review sample, write results and a summary
+    sample    draw a stratified sample of REAL sentences for hand-labelling
     evaluate  precision / recall / F1 against that hand-labelled file
 
-EXAMPLES  (run from the project root; the Yelp files are read from data/raw/)
+EXAMPLES  (run from the project root after 'python -m utils.build_cache')
     python -m tasks.task_3_5 text "Better than Olive Garden."
-    python -m tasks.task_3_5 detect --limit 5000
-    python -m tasks.task_3_5 sample --n 200
-    python -m tasks.task_3_5 evaluate --gold outputs/task_3_5/to_label.tsv
+    python -m tasks.task_3_5 detect
+    python -m tasks.task_3_5 sample
+    python -m tasks.task_3_5 evaluate
 """
 import argparse     # command-line interface
 import collections  # Counter / defaultdict for statistics
-import json         # the Yelp files are JSON-lines (one JSON object per line)
+import json         # results and sample metadata are written as JSON
+import random       # reproducible stratified sampling and bootstrap
 import re           # regular expressions: the core of the rule-based NLP
 import sys
+from multiprocessing import Pool
 from pathlib import Path
 
+from tasks.task_3_3_1 import DEFAULT_FRACTION, SAMPLE_SEED, sample_rows
+from utils.load_cache import load_businesses, load_reviews
+
 ROOT = Path(__file__).resolve().parents[1]
-RAW_DIR = ROOT / "data" / "raw"
 OUTPUT_DIR = ROOT / "outputs" / "task_3_5"
-REVIEW_FILE = RAW_DIR / "yelp_academic_dataset_review.json"
-BUSINESS_FILE = RAW_DIR / "yelp_academic_dataset_business.json"
+TUNING_ROWS = 50_000      # review rows 0..49,999 were used to tune the rules
+BATCH_SIZE = 2_000
+PROGRESS_INTERVAL = 100_000
 
 # ==========================================================================
 # 1. SENTENCE SPLITTING   (NLP step: sentence segmentation)
@@ -416,85 +430,246 @@ def _direction(s):
 
 
 # ==========================================================================
-# 5. EVALUATION ON REAL YELP SENTENCES (labelled by the group, no invented data)
+# 5. DATA ACCESS   (shared Arrow cache and shared 10% review sample)
 # ==========================================================================
-def cmd_sample(args):
-    """Draw random sentences from the REAL review.json so group members can label them.
+def build_business_index():
+    """Read the business cache into a BusinessIndex."""
+    idx = BusinessIndex()
+    biz = load_businesses().select_columns(["business_id", "name", "categories", "city"])
+    for batch in biz.iter(batch_size=10_000):
+        for bid, name, cats, city in zip(batch["business_id"], batch["name"], batch["categories"],
+                                         batch["city"]):
+            idx.add(bid, name, cats, city)
+    return idx
 
-    Output TSV columns:  review_id <TAB> label (empty: fill 1 or 0) <TAB> sentence
-    A fixed random seed makes the sample reproducible.
+
+def iter_review_batches(rows):
+    """Yield lists of (review_id, business_id, stars, text) for the given rows of the review cache."""
+    reviews = load_reviews().select_columns(["review_id", "business_id", "stars", "text"]).select(rows)
+    for batch in reviews.iter(batch_size=BATCH_SIZE):
+        yield list(zip(batch["review_id"], batch["business_id"], batch["stars"], batch["text"]))
+
+
+# Classifying is the slow part (~40 regexes per sentence), so batches of reviews are
+# shared out to worker processes.  Each worker builds its own business index once.
+_WORKER = {}
+
+
+def _init_worker(threshold):
+    _WORKER["idx"] = build_business_index()
+    _WORKER["threshold"] = threshold
+
+
+def _classify_batch(batch):
+    """Split and classify every review of a batch (runs in a worker process)."""
+    idx, out = _WORKER["idx"], []
+    for rid, bid, stars, text in batch:
+        name = idx.meta.get(bid, ("",))[0]
+        out.append((rid, bid, stars, [(s, classify(s, idx, bid, name, _WORKER["threshold"]))
+                                      for s in split_sentences(text)]))
+    return out
+
+
+def classify_reviews(rows, threshold, workers):
+    """Yield (review_id, business_id, stars, [(sentence, result), ...]) per review, in row order."""
+    batches = iter_review_batches(rows)
+    if workers <= 1:
+        _init_worker(threshold)
+        for res in map(_classify_batch, batches):
+            yield from res
+        return
+    with Pool(workers, initializer=_init_worker, initargs=(threshold,)) as pool:
+        for res in pool.imap(_classify_batch, batches):     # imap keeps the row order
+            yield from res
+
+
+# ==========================================================================
+# 6. EVALUATION ON REAL YELP SENTENCES (labelled by the group, no invented data)
+# ==========================================================================
+# Comparison sentences are rare, so a plain random sample holds only a handful of
+# positives.  'sample' therefore draws from three strata and 'evaluate' re-weights
+# each stratum by its size, which gives estimates for ALL sentences:
+#   flagged : the detector says "comparison"                -> precision
+#   cue     : not flagged, but has a comparison-like word   -> where missed comparisons hide
+#   other   : everything else                               -> checks that few are missed there
+_CUE = _rx(r"\b(?:than|then|compar\w*|unlike|similar|same\s+as|versus|vs|prefer\w*|instead|elsewhere|"
+           r"other|another|best|worst|favou?rite|remind\w*|just\s+like|rival\w*|beats?)\b")
+STRATA = ("flagged", "cue", "other")
+
+
+def _stratum(sentence, res):
+    """Name of the sampling stratum of one classified sentence."""
+    if res["is_comparison"]:
+        return "flagged"
+    if res["score"] >= 1 or _CUE.search(sentence):
+        return "cue"
+    return "other"
+
+
+def cmd_sample(args):
+    """Draw a stratified, blind sample of REAL sentences for the group to label.
+
+    Pool: reviews of the shared 10% sample, minus the tuning rows (0..TUNING_ROWS-1).
+    From --reviews random reviews of that pool, every sentence of 5-60 words is
+    classified, and a fixed number per stratum is kept (reservoir sampling).
+    The rows are shuffled so labellers cannot tell which stratum a sentence came from.
+
+    to_label.tsv     id <TAB> label (empty: fill 1 or 0) <TAB> sentence
+    sample_key.json  stratum sizes and the review / business / stratum of every id
     """
-    import random
+    out = Path(args.out)
+    if out.exists() and not args.force:
+        sys.exit(f"{out} already exists (it may hold labels). Use --force to overwrite it.")
     rng = random.Random(args.seed)
-    pool, seen = [], 0
-    with open(args.review, encoding="utf-8") as f:
-        for line in f:
-            if args.limit and seen >= args.limit:
-                break
-            try:
-                r = json.loads(line)
-            except json.JSONDecodeError:
+    pool = [r for r in sample_rows(load_reviews().num_rows, args.fraction) if r >= TUNING_ROWS]
+    rows = sorted(rng.sample(pool, min(args.reviews, len(pool))))
+    print(f"Reading {len(rows):,} random reviews from {len(pool):,} in the shared sample "
+          f"(fraction={args.fraction}, seed={SAMPLE_SEED}, tuning rows < {TUNING_ROWS:,} excluded)")
+
+    want = {"flagged": args.n_flagged, "cue": args.n_cue, "other": args.n_other}
+    seen = collections.Counter()            # population size of each stratum
+    picked = {st: [] for st in STRATA}      # reservoir per stratum
+    for rid, bid, _stars, results in classify_reviews(rows, args.threshold, args.workers):
+        for s, res in results:
+            if not 5 <= len(s.split()) <= 60:  # skip fragments and run-on blocks
                 continue
-            seen += 1
-            for s in split_sentences(r.get("text", "")):
-                if 5 <= len(s.split()) <= 60:          # skip fragments and run-on blocks
-                    pool.append((r.get("review_id", ""), " ".join(s.split())))   # no tabs/newlines
-    if not pool:
-        sys.exit("No sentences found - check the --review file.")
-    pick = rng.sample(pool, min(args.n, len(pool)))
-    with open(args.out, "w", encoding="utf-8") as o:
-        for rid, s in pick:
-            o.write(f"{rid}\t\t{s}\n")
-    print(f"Wrote {len(pick)} random sentences from {seen} reviews to {args.out}. "
+            st = _stratum(s, res)
+            seen[st] += 1
+            item = (rid, bid, " ".join(s.split()))   # no tabs/newlines
+            if len(picked[st]) < want[st]:
+                picked[st].append(item)
+            else:                                    # keep each sentence with equal probability
+                j = rng.randrange(seen[st])
+                if j < want[st]:
+                    picked[st][j] = item
+
+    items = [(st, *item) for st in STRATA for item in picked[st]]
+    rng.shuffle(items)
+    with open(out, "w", encoding="utf-8") as o:
+        o.write("id\tlabel\tsentence\n")
+        for i, (_st, _rid, _bid, s) in enumerate(items, 1):
+            o.write(f"{i}\t\t{s}\n")
+    key = {"fraction": args.fraction, "sample_seed": SAMPLE_SEED, "seed": args.seed,
+           "excluded_tuning_rows": TUNING_ROWS, "reviews_read": len(rows), "threshold": args.threshold,
+           "population": {st: seen[st] for st in STRATA},
+           "sampled": {st: len(picked[st]) for st in STRATA},
+           "items": {str(i): {"review_id": rid, "business_id": bid, "stratum": st}
+                     for i, (st, rid, bid, _s) in enumerate(items, 1)}}
+    with open(args.key, "w", encoding="utf-8") as o:
+        json.dump(key, o, indent=2)
+    print("Sentences per stratum (population):", dict(key["population"]))
+    print("Sampled per stratum               :", dict(key["sampled"]))
+    print(f"Wrote {len(items)} sentences to {out} and the key to {args.key}. "
           f"Fill column 2 with 1 (comparison) or 0 (not), then run 'evaluate'.")
 
 
+def _scores(c):
+    """Precision, recall and F1 from a (possibly weighted) confusion Counter."""
+    prec = c["tp"] / (c["tp"] + c["fp"]) if c["tp"] + c["fp"] else 0.0
+    rec = c["tp"] / (c["tp"] + c["fn"]) if c["tp"] + c["fn"] else 0.0
+    f1 = 2 * prec * rec / (prec + rec) if prec + rec else 0.0
+    return prec, rec, f1
+
+
+def _confusion(rows, weight):
+    """Confusion counts; each row counts 'weight[stratum]' times."""
+    c = collections.Counter()
+    for st, y, p, _s in rows:
+        c[("tp" if y else "fp") if p else ("fn" if y else "tn")] += weight[st]
+    return c
+
+
 def cmd_evaluate(args):
-    """Compare the tool's predictions with the human labels and print precision/recall/F1.
+    """Compare the tool's predictions with the group's labels and report precision/recall/F1.
 
     TP = comparison correctly found      FP = flagged but not a comparison
     FN = comparison the tool missed      TN = correctly ignored
     precision = TP/(TP+FP)   recall = TP/(TP+FN)   F1 = harmonic mean of the two
+
+    Each labelled sentence stands for  population(stratum) / labelled(stratum)  sentences,
+    so the weighted scores estimate the detector's performance on all sentences.
+    The 95% intervals come from a bootstrap that resamples within each stratum.
     """
-    tp = fp = fn = tn = 0
-    errors = []
+    key = None
+    if Path(args.key).is_file():
+        with open(args.key, encoding="utf-8") as f:
+            key = json.load(f)
     # Use the same business index as 'detect', so the scores describe the same system.
-    idx = load_businesses(args.business) if args.business else None
-    with open(args.gold, encoding="utf-8-sig") as f:          # utf-8-sig: tolerates Excel's BOM
+    idx = None if args.no_business else build_business_index()
+    rows = []                                          # (stratum, label, prediction, sentence)
+    with open(args.gold, encoding="utf-8-sig") as f:   # utf-8-sig: tolerates Excel's BOM
         for line in f:
             parts = line.rstrip("\r\n").split("\t")
             if len(parts) < 3 or parts[1].strip() not in ("0", "1"):
-                continue                                  # skip unlabelled rows
-            y, s = int(parts[1].strip()), parts[2]
-            p = int(classify(s, idx, threshold=args.threshold)["is_comparison"])
-            if p and y:
-                tp += 1
-            elif p:
-                fp += 1
-                errors.append(("FP", s))
-            elif y:
-                fn += 1
-                errors.append(("FN", s))
-            else:
-                tn += 1
-    n = tp + fp + fn + tn
-    if not n:
+                continue                               # skip the header and unlabelled rows
+            item = key["items"].get(parts[0]) if key else None
+            if key and item is None:
+                sys.exit(f"id {parts[0]} is not in {args.key}; was the key file overwritten?")
+            bid = item["business_id"] if item else None
+            name = idx.meta.get(bid, ("",))[0] if idx and bid else None
+            p = int(classify(parts[2], idx, bid, name, args.threshold)["is_comparison"])
+            rows.append((item["stratum"] if item else "all", int(parts[1].strip()), p, parts[2]))
+    if not rows:
         sys.exit("No labelled rows found (column 2 must be 0 or 1).")
-    prec = tp / (tp + fp) if tp + fp else 0
-    rec = tp / (tp + fn) if tp + fn else 0
-    f1 = 2 * prec * rec / (prec + rec) if prec + rec else 0
-    print(f"Labelled sentences: {n}  TP={tp} FP={fp} FN={fn} TN={tn}")
-    print(f"Precision={prec:.3f}  Recall={rec:.3f}  F1={f1:.3f}  Accuracy={(tp + tn) / n:.3f}")
-    for kind, s in errors[:args.show_errors]:
-        print(f"  {kind}: {s}")
+
+    labelled = collections.Counter(r[0] for r in rows)
+    positives = collections.Counter(r[0] for r in rows if r[1])
+    population = key["population"] if key else {"all": len(rows)}
+    weight = {st: population[st] / labelled[st] for st in labelled}
+    raw = _confusion(rows, collections.defaultdict(lambda: 1))
+    est = _confusion(rows, weight)
+
+    rng = random.Random(args.seed)
+    by_st = collections.defaultdict(list)
+    for r in rows:
+        by_st[r[0]].append(r)
+    boot = []
+    for _ in range(args.bootstrap):
+        resample = [rng.choice(g) for g in by_st.values() for _ in g]
+        boot.append(_scores(_confusion(resample, weight)))
+
+    def ci(i):
+        vals = sorted(b[i] for b in boot)
+        return [vals[int(0.025 * len(vals))], vals[min(int(0.975 * len(vals)), len(vals) - 1)]] if vals else None
+
+    n = len(rows)
+    p, r, f1 = _scores(raw)
+    wp, wr, wf1 = _scores(est)
+    print(f"Labelled sentences: {n}")
+    print(f"{'stratum':<8} {'population':>11} {'labelled':>9} {'positives':>10}")
+    for st in labelled:
+        print(f"{st:<8} {population[st]:>11,} {labelled[st]:>9} {positives[st]:>10}")
+    print(f"\nOn the labelled sample (unweighted, oversampled positives inflate these):")
+    print(f"  TP={raw['tp']} FP={raw['fp']} FN={raw['fn']} TN={raw['tn']}  "
+          f"Precision={p:.3f}  Recall={r:.3f}  F1={f1:.3f}")
+    print(f"Estimated for all sentences (weighted by stratum size, 95% bootstrap CI):")
+    for label, val, i in (("Precision", wp, 0), ("Recall", wr, 1), ("F1", wf1, 2)):
+        lo, hi = ci(i) or (val, val)
+        print(f"  {label:<9} = {val:.3f}  [{lo:.3f}, {hi:.3f}]")
+    errors = [("FP" if pr else "FN", st, s) for st, y, pr, s in rows if y != pr]
+    for kind, st, s in errors[:args.show_errors]:
+        print(f"  {kind} ({st}): {s}")
+
+    result = {"labelled": n, "threshold": args.threshold, "bootstrap": args.bootstrap,
+              "strata": {st: {"population": population[st], "labelled": labelled[st],
+                              "positives": positives[st]} for st in labelled},
+              "unweighted": {**{k: raw[k] for k in ("tp", "fp", "fn", "tn")},
+                             "precision": p, "recall": r, "f1": f1},
+              "weighted": {**{k: round(est[k], 1) for k in ("tp", "fp", "fn", "tn")},
+                           "precision": wp, "recall": wr, "f1": wf1,
+                           "precision_ci95": ci(0), "recall_ci95": ci(1), "f1_ci95": ci(2)},
+              "errors": [{"type": k, "stratum": st, "sentence": s} for k, st, s in errors]}
+    with open(args.out, "w", encoding="utf-8") as o:
+        json.dump(result, o, indent=2, ensure_ascii=False)
+    print(f"\nEvaluation written to {args.out}")
 
 
 # ==========================================================================
-# 6. COMMAND-LINE COMMANDS
+# 7. COMMAND-LINE COMMANDS
 # ==========================================================================
 def cmd_text(args):
     """Classify sentences typed on the command line and show the evidence."""
-    idx = load_businesses(args.business) if args.business else None
+    idx = build_business_index() if args.business else None
     for s in args.sentences:
         r = classify(s, idx, threshold=args.threshold)
         print(f"[{'COMPARISON' if r['is_comparison'] else 'no        '}] score={r['score']} "
@@ -503,51 +678,34 @@ def cmd_text(args):
             print(f"      - {kind}: '{ev}'")
 
 
-def load_businesses(path):
-    """Read business.json (JSON-lines) into a BusinessIndex."""
-    idx = BusinessIndex()
-    with open(path, encoding="utf-8") as f:
-        for line in f:
-            try:
-                b = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if "business_id" in b:
-                idx.add(b["business_id"], b.get("name", ""), b.get("categories"), b.get("city"))
-    return idx
-
-
 def cmd_detect(args):
-    """Stream review.json, detect comparison sentences and print statistics.
+    """Run the detector over the shared review sample and write the results and a summary.
 
-    The review file is read line by line, so memory use stays small even for the full dataset.
+    The review cache is memory-mapped and read in batches, so memory use stays small.
     """
-    idx = load_businesses(args.business)
+    idx = build_business_index()
+    rows = sample_rows(load_reviews().num_rows, args.fraction)
+    if args.limit:
+        rows = rows[:args.limit]
+    print(f"Reviews in sample: {len(rows):,} (fraction={args.fraction}, seed={SAMPLE_SEED})")
     n_rev = n_sent = n_cmp = n_rev_cmp = 0            # counters
     dirs = collections.Counter()                      # direction distribution
     cat_tot, cat_cmp = collections.Counter(), collections.Counter()   # per-category review counts
     stars_all, stars_cmp = [], []                     # star ratings: all reviews / reviews with a comparison
     cited = collections.Counter()                     # most frequently compared-to businesses
-    out = open(args.out, "w", encoding="utf-8") if args.out else None
-    shown = 0
-    with open(args.review, encoding="utf-8") as f:
-        for line in f:
-            if args.limit and n_rev >= args.limit:
-                break
-            try:
-                r = json.loads(line)
-            except json.JSONDecodeError:
-                continue
+    examples = []                                     # a few examples printed to the screen
+    with open(args.out, "w", encoding="utf-8") as out:
+        for rid, bid, stars, results in classify_reviews(rows, args.threshold, args.workers):
             n_rev += 1
-            bid = r.get("business_id")
+            if n_rev % PROGRESS_INTERVAL == 0:
+                print(f"  {n_rev:,} reviews, {n_cmp:,} comparison sentences so far")
             name, cats, city = idx.meta.get(bid, ("", [], ""))
             has = False                                # does this review contain >= 1 comparison?
-            stars_all.append(r.get("stars", 0))
+            stars_all.append(stars or 0)
             for c in cats[:3]:                         # first three categories of the business
                 cat_tot[c] += 1
-            for s in split_sentences(r.get("text", "")):
+            for s, res in results:
                 n_sent += 1
-                res = classify(s, idx, bid, name, args.threshold)
                 if not res["is_comparison"]:
                     continue
                 has = True
@@ -555,43 +713,53 @@ def cmd_detect(args):
                 dirs[res["direction"]] += 1
                 for o in res["others"]:
                     cited[o] += 1
-                rec = {"review_id": r.get("review_id"), "business": name, "stars": r.get("stars"),
+                rec = {"review_id": rid, "business": name, "stars": stars,
                        "sentence": s, "score": res["score"], "direction": res["direction"],
                        "evidence": res["evidence"], "other_businesses": res["others"]}
-                if out:
-                    out.write(json.dumps(rec, ensure_ascii=False) + "\n")
-                if shown < args.show:                  # print a few examples to the screen
-                    shown += 1
-                    print(f"({r.get('stars')}★ {name}) [{res['direction']}, score {res['score']}] {s}")
+                out.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                if len(examples) < args.show:
+                    examples.append(f"({stars}★ {name}) [{res['direction']}, score {res['score']}] {s}")
             if has:
                 n_rev_cmp += 1
-                stars_cmp.append(r.get("stars", 0))
+                stars_cmp.append(stars or 0)
                 for c in cats[:3]:
                     cat_cmp[c] += 1
-    if out:
-        out.close()
 
     # ---- summary statistics ----
     def avg(x):
         return sum(x) / len(x) if x else 0.0
 
+    rates = [(c, cat_cmp[c] / t, t) for c, t in cat_tot.items() if t >= args.min_cat]
+    summary = {"fraction": args.fraction, "sample_seed": SAMPLE_SEED, "threshold": args.threshold,
+               "reviews": n_rev, "sentences": n_sent, "comparison_sentences": n_cmp,
+               "comparison_sentence_pct": 100 * n_cmp / max(n_sent, 1),
+               "reviews_with_comparison": n_rev_cmp,
+               "reviews_with_comparison_pct": 100 * n_rev_cmp / max(n_rev, 1),
+               "avg_stars_all": avg(stars_all), "avg_stars_with_comparison": avg(stars_cmp),
+               "directions": dict(dirs),
+               "top_categories": [{"category": c, "comparison_rate_pct": 100 * rt, "reviews": t}
+                                  for c, rt, t in sorted(rates, key=lambda x: -x[1])[:10]],
+               "most_compared_to": [{"business": k, "mentions": v} for k, v in cited.most_common(10)],
+               "examples": examples}
+    with open(args.summary, "w", encoding="utf-8") as o:
+        json.dump(summary, o, indent=2, ensure_ascii=False)
+
+    print("\n".join(examples))
     print("\n========== SUMMARY ==========")
     print(f"Reviews processed            : {n_rev}")
     print(f"Sentences processed          : {n_sent}")
-    print(f"Comparison sentences         : {n_cmp} ({100 * n_cmp / max(n_sent, 1):.2f}% of sentences)")
-    print(f"Reviews with >=1 comparison  : {n_rev_cmp} ({100 * n_rev_cmp / max(n_rev, 1):.2f}% of reviews)")
+    print(f"Comparison sentences         : {n_cmp} ({summary['comparison_sentence_pct']:.2f}% of sentences)")
+    print(f"Reviews with >=1 comparison  : {n_rev_cmp} ({summary['reviews_with_comparison_pct']:.2f}% of reviews)")
     print(f"Avg stars  all / with-comparison : {avg(stars_all):.2f} / {avg(stars_cmp):.2f}")
     print("Direction distribution       :", dict(dirs))
     print(f"\nTop categories by comparison rate (min {args.min_cat} reviews):")
-    rates = [(c, cat_cmp[c] / t, t) for c, t in cat_tot.items() if t >= args.min_cat]
-    for c, rt, t in sorted(rates, key=lambda x: -x[1])[:10]:
-        print(f"  {c:<30} {100 * rt:5.1f}%  (n={t})")
+    for t in summary["top_categories"]:
+        print(f"  {t['category']:<30} {t['comparison_rate_pct']:5.1f}%  (n={t['reviews']})")
     if cited:
         print("\nMost frequently compared-to businesses:")
         for k, v in cited.most_common(10):
             print(f"  {k:<30} {v}")
-    if args.out:
-        print(f"\nDetected sentences written to {args.out}")
+    print(f"\nDetected sentences written to {args.out}, summary to {args.summary}")
 
 
 def main():
@@ -607,41 +775,54 @@ def main():
 
     t = sub.add_parser("text", help="classify sentences given on the command line")
     t.add_argument("sentences", nargs="+")
-    t.add_argument("--business", help="business.json, to also recognise named competitors")
+    t.add_argument("--business", action="store_true",
+                   help="load the business cache, to also recognise named competitors")
     t.add_argument("--threshold", type=int, default=2)
     t.set_defaults(fn=cmd_text)
 
-    d = sub.add_parser("detect", help="run on review.json")
-    d.add_argument("--review", default=str(REVIEW_FILE))
-    d.add_argument("--business", default=str(BUSINESS_FILE))
-    d.add_argument("--limit", type=int, default=50000, help="max reviews (0 = all)")
+    d = sub.add_parser("detect", help="run on the shared review sample")
+    d.add_argument("--fraction", type=float, default=DEFAULT_FRACTION,
+                   help="fraction of reviews in the shared sample (1.0 = all reviews)")
+    d.add_argument("--limit", type=int, default=0, help="max reviews of the sample, for a quick run (0 = all)")
     d.add_argument("--threshold", type=int, default=2)
+    d.add_argument("--workers", type=int, default=8)
     d.add_argument("--out", default=str(OUTPUT_DIR / "comparisons.jsonl"),
-                   help="detected sentences as JSON lines (default: outputs/task_3_5/comparisons.jsonl)")
+                   help="detected sentences as JSON lines")
+    d.add_argument("--summary", default=str(OUTPUT_DIR / "summary.json"))
     d.add_argument("--show", type=int, default=15, help="number of examples printed")
     d.add_argument("--min-cat", type=int, default=30,
                    help="minimum reviews for a category to appear in the ranking")
     d.set_defaults(fn=cmd_detect)
 
-    sm = sub.add_parser("sample", help="draw random real sentences from review.json to hand-label")
-    sm.add_argument("--review", default=str(REVIEW_FILE))
-    sm.add_argument("--n", type=int, default=200)
-    sm.add_argument("--limit", type=int, default=50000, help="max reviews to read (0 = all)")
+    sm = sub.add_parser("sample", help="draw a stratified sample of real sentences to hand-label")
+    sm.add_argument("--fraction", type=float, default=DEFAULT_FRACTION)
+    sm.add_argument("--reviews", type=int, default=50_000, help="random reviews read from the pool")
+    sm.add_argument("--n-flagged", type=int, default=100, help="sentences the detector flags")
+    sm.add_argument("--n-cue", type=int, default=100, help="unflagged sentences with a comparison-like word")
+    sm.add_argument("--n-other", type=int, default=100, help="all other sentences")
     sm.add_argument("--seed", type=int, default=42)
+    sm.add_argument("--threshold", type=int, default=2)
+    sm.add_argument("--workers", type=int, default=8)
     sm.add_argument("--out", default=str(OUTPUT_DIR / "to_label.tsv"))
+    sm.add_argument("--key", default=str(OUTPUT_DIR / "sample_key.json"))
+    sm.add_argument("--force", action="store_true", help="overwrite an existing to_label.tsv")
     sm.set_defaults(fn=cmd_sample)
 
-    e = sub.add_parser("evaluate", help="P/R/F1 on a hand-labelled TSV made by 'sample'")
-    e.add_argument("--gold", required=True)
-    e.add_argument("--business", default=str(BUSINESS_FILE),
-                   help="business.json, so other-business mentions count as in 'detect' ('' to skip)")
+    e = sub.add_parser("evaluate", help="P/R/F1 on the hand-labelled TSV made by 'sample'")
+    e.add_argument("--gold", default=str(OUTPUT_DIR / "to_label.tsv"))
+    e.add_argument("--key", default=str(OUTPUT_DIR / "sample_key.json"),
+                   help="stratum key written by 'sample' (without it, rows are treated as a random sample)")
+    e.add_argument("--no-business", action="store_true",
+                   help="do not load the business cache (other-business mentions then never count)")
     e.add_argument("--threshold", type=int, default=2)
+    e.add_argument("--bootstrap", type=int, default=1000)
+    e.add_argument("--seed", type=int, default=42)
     e.add_argument("--show-errors", type=int, default=20)
+    e.add_argument("--out", default=str(OUTPUT_DIR / "evaluation.json"))
     e.set_defaults(fn=cmd_evaluate)
 
     args = ap.parse_args()
-    if getattr(args, "out", None):             # create outputs/task_3_5/ when writing there
-        Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     args.fn(args)
 
 
