@@ -1,21 +1,41 @@
 Task 3.4.1 - Lexicon-based sentiment (VADER, shared 10% sample, seed 42)
 
-Reviews per sector (years with enough reviews only)
-  Fast Food: 19888
-  Ice Cream: 12934
-  Italian: 42197
+Reviews per sector (full sample, before the 100-review threshold):
+  Fast Food: 19993
+  Italian: 42326
+  Ice Cream: 13078
+  Total: 75397
+  (Yearly/seasonal groups with fewer than 100 reviews are excluded from the trend statistics below.)
+  (Seasons assume the northern hemisphere: Dec-Feb winter, Mar-May spring, Jun-Aug summer, Sep-Nov autumn.)
 
 Yearly trend (years with >=100 reviews):
   Fast Food: 0.630 (2009) -> 0.043 (2022), slope -0.0431/yr, p=7.73e-09, n_years=14
-  Ice Cream: 0.825 (2009) -> 0.677 (2021), slope -0.0093/yr, p=1.19e-05, n_years=13
   Italian: 0.787 (2008) -> 0.666 (2022), slope -0.0080/yr, p=3.13e-06, n_years=15
+  Ice Cream: 0.825 (2009) -> 0.677 (2021), slope -0.0093/yr, p=1.19e-05, n_years=13
 
 Mean stars (first -> last year, >=100 reviews):
   Fast Food: 3.48 -> 2.44
-  Ice Cream: 4.12 -> 4.05
   Italian: 3.74 -> 3.85
+  Ice Cream: 4.12 -> 4.05
 
 Seasonal means and gap (max-min):
   Fast Food: Autumn 0.354, Spring 0.347, Summer 0.363, Winter 0.370 | gap 0.024
-  Ice Cream: Autumn 0.717, Spring 0.722, Summer 0.723, Winter 0.730 | gap 0.013
   Italian: Autumn 0.689, Spring 0.695, Summer 0.693, Winter 0.691 | gap 0.005
+  Ice Cream: Autumn 0.717, Spring 0.722, Summer 0.723, Winter 0.730 | gap 0.013
+
+VADER vs star rating and statistical tests:
+  Spearman(VADER, stars) = 0.556
+  Agreement with star label = 0.760
+  Fast Food - Italian: diff = -0.334, Welch p(adj) = 0, Cohen's d = -0.542
+  Fast Food - Ice Cream: diff = -0.364, Welch p(adj) = 0, Cohen's d = -0.614
+  Italian - Ice Cream: diff = -0.030, Welch p(adj) = 4.13e-10, Cohen's d = -0.062
+  Fast Food slope/yr = -0.0431, p = 7.73e-09 (years: 2009-2022)
+  Italian slope/yr = -0.0080, p = 3.13e-06 (years: 2008-2022)
+  Ice Cream slope/yr = -0.0093, p = 1.19e-05 (years: 2009-2021)
+  Fast Food: Kruskal-Wallis H = 4.29, p = 0.232, max-min seasonal mean gap = 0.024
+  Italian: Kruskal-Wallis H = 3.13, p = 0.372, max-min seasonal mean gap = 0.005
+  Ice Cream: Kruskal-Wallis H = 2.35, p = 0.503, max-min seasonal mean gap = 0.013
+
+Disagreement counts:
+  1-star but VADER > 0.8: 1404 | 5-star but VADER < -0.5: 136
+  1-star/VADER>0.8 by sector: Italian 761, Fast Food 493, Ice Cream 150
